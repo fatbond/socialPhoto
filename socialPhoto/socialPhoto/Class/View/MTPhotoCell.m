@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "MeshtilesPhotoCell.h"
+#import "MTPhotoCell.h"
 
 
 #define IMAGE_BUTTON_WIDTH_RATIO      300.0/320.0
@@ -14,7 +14,7 @@
 #define USER_IMAGE_BUTTON_WIDTH_RATIO 50.0/320.0
 #define TIME_POST_LABEL_WIDTH_RATIO   100.0/320.0
 
-@interface MeshtilesPhotoCell() 
+@interface MTPhotoCell() 
 
 @property (readonly, nonatomic) CGFloat viewSpacing;
 @property (readonly, nonatomic) CGFloat imageButtonWidth;
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation MeshtilesPhotoCell
+@implementation MTPhotoCell
 
 @synthesize imageButton     = _imageButton;
 @synthesize photo           = _photo;
@@ -118,9 +118,9 @@
   return _userNameButton;
 }
 
-- (WebImageButton *)imageButton {
+- (MTWebImageButton *)imageButton {
   if (!_imageButton) {
-    _imageButton = [[WebImageButton alloc] initWithFrame:CGRectMake(self.viewSpacing, 
+    _imageButton = [[MTWebImageButton alloc] initWithFrame:CGRectMake(self.viewSpacing, 
                                                                     self.viewSpacing,
                                                                     self.imageButtonWidth,
                                                                     self.imageButtonWidth)];
@@ -130,9 +130,9 @@
   return _imageButton;
 }
 
-- (WebImageButton *)userImageButton {
+- (MTWebImageButton *)userImageButton {
   if (!_userImageButton) {
-    _userImageButton = [[WebImageButton alloc] initWithFrame:CGRectMake(self.viewSpacing, 
+    _userImageButton = [[MTWebImageButton alloc] initWithFrame:CGRectMake(self.viewSpacing, 
                                                                         self.frame.size.width, 
                                                                         self.userImageButtonWidth, 
                                                                         self.userImageButtonWidth)];
@@ -142,13 +142,13 @@
                         
 }
 
-- (void)setPhoto:(MeshtilesPhotoDetail *)photo {
+- (void)setPhoto:(MTPhotoDetail *)photo {
   _photo = photo;
     
   self.imageButton.imageURL     = _photo.photoURL;
   self.userImageButton.imageURL = _photo.user.imageURL;
   [self.userNameButton setTitle:_photo.user.userName forState:UIControlStateNormal];
-  self.timePostLabel.text       = [NSString stringWithFormat:@"%@ ago", [MeshtilesPhotoCell stringForTimeIntervalSinceCreated:_photo.timePost]];
+  self.timePostLabel.text       = [NSString stringWithFormat:@"%@ ago", [MTPhotoCell stringForTimeIntervalSinceCreated:_photo.timePost]];
   
   CGSize textSize = [_photo.caption sizeWithFont:[UIFont systemFontOfSize:13.0]
                                  constrainedToSize:CGSizeMake([self captionLabelWidth], 2000)
@@ -201,7 +201,7 @@
 
 #pragma mark - Helper methods
 
-+ (CGFloat)cellHeightForFrameWidth:(CGFloat)frameWidth andPhoto:(MeshtilesPhotoDetail *)photo {
++ (CGFloat)cellHeightForFrameWidth:(CGFloat)frameWidth andPhoto:(MTPhotoDetail *)photo {
   CGFloat firstPart = frameWidth;
   
   CGFloat secondPart = MAX(frameWidth * USER_IMAGE_BUTTON_WIDTH_RATIO,

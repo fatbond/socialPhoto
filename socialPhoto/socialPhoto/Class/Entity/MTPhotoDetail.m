@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeshtilesPhotoDetail.h"
+#import "MTPhotoDetail.h"
 
-@implementation MeshtilesPhotoDetail
+@implementation MTPhotoDetail
 
 @synthesize photoURL  = _photoURL;
 @synthesize caption   = _caption;

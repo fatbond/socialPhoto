@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "MeshtilesUser.h"
+#import "MTUser.h"
 
-@implementation MeshtilesUser
+@implementation MTUser
 
 @synthesize userId    = _userId;
 @synthesize imageURL  = _imageURL;

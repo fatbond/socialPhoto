@@ -1,60 +1,119 @@
 //
-//  MTGridController.m
-//  socialPhoto
+//  MTPhotoByTagGridViewController.m
+//  ImageGridTableView
 //
-//  Created by ltt on 7/5/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Dung Nguyen on 7/10/12.
+//  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
 #import "MTGridController.h"
 
+#import "MTPhoto.h"
+#import "MTFetcher.h"
+
+@interface MTGridController () <MTFetcherDelegate, MTImageGridViewDatasource, MTImageGridViewDelegate>
+
+
+@end
+
 @implementation MTGridController
+
+@synthesize photos = _photos;
+@synthesize currentPage = _currentPage;
+@synthesize imageGridView = _imageGridView;
+
+
+
+#pragma mark - Helper methods
+
+- (void)displayConnectionErrorAlert {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
+                                                  message:[NSString stringWithFormat:@"Unable to connect to network.\nCheck your network and try again!"]
+                                                 delegate:self 
+                                        cancelButtonTitle:@"Close" 
+                                        otherButtonTitles:nil];
+  [alert show];
+}
+
+- (void)doneRefreshAndLoad {
+  [self.imageGridView reloadData];
+  
+  self.imageGridView.isRefreshing = NO;
+  self.imageGridView.isLoadingNextPage = NO;
+}
+
+
+
+
+#pragma mark - Setters/getters
+
+- (MTImageGridView *)imageGridView {
+  if (!_imageGridView) {
+    _imageGridView = [[MTImageGridView alloc] initWithFrame:self.view.bounds];
+    _imageGridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _imageGridView.gridDelegate = self;
+    _imageGridView.gridDataSource = self;
+    _imageGridView.numberOfImagesPerRow = 4;
+    _imageGridView.canRefresh = YES;
+  }
+  
+  return _imageGridView;
+}
+
+#pragma mark - MTImageGridViewDelegate methods
+
+- (void)imageTappedAtIndex:(NSUInteger)index {
+  NSLog(@"Tapped at index %d", index);
+  //  
+  //  MeshtilesPhotoViewController *photoVC = [[MeshtilesPhotoViewController alloc] init];
+  //  photoVC.photoId = [self photoAtIndex:index].photoId; 
+  //  [self.navigationController pushViewController:photoVC animated:YES];
+}
+
+#pragma mark - MTImageGridViewDatasource methods
+
+- (NSURL *)imageURLAtIndex:(NSUInteger)index {
+  MTPhoto *photo = [self.photos objectAtIndex:index];
+  
+  return photo.thumbURL;
+}
+
+
+- (NSUInteger)numberOfImagesInImageGridView:(MTImageGridView *)imageGridView {
+  return self.photos.count;
+}
+
+
+
+
+#pragma mark - ViewController lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+  self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+  if (self) {
+    // Custom initialization
     
-    // Release any cached data, images, etc that aren't in use.
+    [self.view addSubview:self.imageGridView];
+  }
+  return self;
 }
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+  [super viewDidLoad];
+	// Do any additional setup after loading the view.
 }
-*/
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+  return !(interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
 }
 
 @end

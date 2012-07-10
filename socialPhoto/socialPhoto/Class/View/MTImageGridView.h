@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "RefreshableTableView.h"
+#import "MTRefreshableTableView.h"
 
 @protocol MTImageGridViewDelegate;
 @protocol MTImageGridViewDatasource;
 
-@interface MTImageGridView : RefreshableTableView
+@interface MTImageGridView : MTRefreshableTableView
 
 @property (unsafe_unretained, nonatomic) id <MTImageGridViewDelegate> gridDelegate;
 @property (unsafe_unretained, nonatomic) id <MTImageGridViewDatasource> gridDataSource;

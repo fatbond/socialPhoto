@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeshtilesFetcher.h"
-#import "MeshtilesPhoto.h"
+#import "MTFetcher.h"
+#import "MTPhoto.h"
 
 #import "SBJson.h"
 
@@ -27,13 +27,13 @@
 #define MESHTILES_USER_IMAGE_URL    @"url_image"
 
 
-@interface MeshtilesFetcher()
+@interface MTFetcher()
 
 @property (strong, nonatomic) ASIHTTPRequest      *getListUserPhotoByTagsRequest;
 @property (strong, nonatomic) ASIHTTPRequest      *getPhotoDetailRequest;
 @property (strong, nonatomic) ASIFormDataRequest  *getListPhotoDetailFromPhotoIdsRequests;
 
-- (MeshtilesPhotoDetail *)photoDetailFromPhotoDictionary:(NSDictionary *)photoDictionary;
+- (MTPhotoDetail *)photoDetailFromPhotoDictionary:(NSDictionary *)photoDictionary;
 
 - (void)getListUserPhotoByTagsRequestFinished;
 - (void)getPhotoDetailRequestFinished;
@@ -45,7 +45,7 @@
 
 @end
 
-@implementation MeshtilesFetcher
+@implementation MTFetcher
 
 @synthesize delegate                                = _delegate;
 @synthesize getListUserPhotoByTagsRequest           = _getListUserPhotoByTagsRequest;
@@ -126,7 +126,7 @@
   NSMutableArray *photos = [[NSMutableArray alloc] init];      // of MeshtilesPhoto
   
   for (NSDictionary *photoDictionary in photosDictionaries) {
-    MeshtilesPhoto *photo = [[MeshtilesPhoto alloc] init];
+    MTPhoto *photo = [[MTPhoto alloc] init];
     photo.thumbURL  = [photoDictionary  objectForKey:MESHTILES_PHOTO_THUMB_URL];
     photo.photoId   = [photoDictionary  objectForKey:MESHTILES_PHOTO_ID];
     photo.latitude  = [[photoDictionary objectForKey:MESHTILES_PHOTO_LATITUDE] doubleValue];
@@ -148,8 +148,8 @@
 
 #define GET_PHOTO_DETAIL_URL @"http://ec2-107-20-246-0.compute-1.amazonaws.com/api/View/getPhotoDetail?photo_id=%@&user_id=%@"
 
-- (MeshtilesUser *)userFromUserDictionary:(NSDictionary *)userDictionary {
-  MeshtilesUser *user = [[MeshtilesUser alloc] init];
+- (MTUser *)userFromUserDictionary:(NSDictionary *)userDictionary {
+  MTUser *user = [[MTUser alloc] init];
   
   user.userName = [userDictionary objectForKey:MESHTILES_USER_NAME];
   user.userId   = [userDictionary objectForKey:MESHTILES_USER_ID];
@@ -158,8 +158,8 @@
   return user;
 }
 
-- (MeshtilesPhotoDetail *)photoDetailFromPhotoDictionary:(NSDictionary *)photoDictionary {
-  MeshtilesPhotoDetail *photo = [[MeshtilesPhotoDetail alloc] init];
+- (MTPhotoDetail *)photoDetailFromPhotoDictionary:(NSDictionary *)photoDictionary {
+  MTPhotoDetail *photo = [[MTPhotoDetail alloc] init];
   
   photo.photoURL  =   [photoDictionary objectForKey:MESHTILES_PHOTO_URL];
   photo.caption   =   [[photoDictionary objectForKey:MESHTILES_PHOTO_CAPTION] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -173,7 +173,7 @@
   return photo;
 }
 
-- (MeshtilesPhotoDetail *)photoDetailFromJSONString:(NSString *)JSONString {
+- (MTPhotoDetail *)photoDetailFromJSONString:(NSString *)JSONString {
   
   NSDictionary *photoDictionary = [[JSONString JSONValue] objectForKey:MESHTILES_PHOTO];
   
@@ -192,7 +192,7 @@
 
 - (void)getPhotoDetailRequestFinished {
   
-  MeshtilesPhotoDetail *photo = [self photoDetailFromJSONString:[[NSString alloc] initWithData:[self.getPhotoDetailRequest responseData] encoding:NSUTF8StringEncoding]];
+  MTPhotoDetail *photo = [self photoDetailFromJSONString:[[NSString alloc] initWithData:[self.getPhotoDetailRequest responseData] encoding:NSUTF8StringEncoding]];
   
   [self.delegate meshtilesFetcher:self didFinishedGetPhotoDetail:photo];
   

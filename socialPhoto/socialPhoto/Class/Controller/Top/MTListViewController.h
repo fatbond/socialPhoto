@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-#import "RefreshableTableView.h"
+#import "MTRefreshableTableView.h"
 
 #define MaxPageAllowed    10
 
-@interface MeshtilesPhotoByTagListTableViewController : UIViewController
+@interface MTListViewController : UIViewController
 
 @property (strong, nonatomic) NSArray               *photos;            // of MeshtilesPhoto
 @property (strong, nonatomic) NSArray               *photosDetails ;    // of MeshtilesPhotoDetail
 @property (assign, nonatomic) NSUInteger            currentPage;        // count start from 1
 
-@property (strong, nonatomic) RefreshableTableView  *tableView;
+@property (strong, nonatomic) MTRefreshableTableView  *tableView;
 
 - (void)doneRefreshAndLoad;
 

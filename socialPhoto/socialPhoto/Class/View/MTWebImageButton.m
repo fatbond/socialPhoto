@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "WebImageButton.h"
+#import "MTWebImageButton.h"
 
 #import "MBProgressHUD.h"
 #import <SDWebImage/SDWebImageManager.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface WebImageButton() <SDWebImageManagerDelegate>
+@interface MTWebImageButton() <SDWebImageManagerDelegate>
 
 @property (strong, nonatomic) MBProgressHUD *progressHUD;
 @property (strong, nonatomic) UIButton      *imageButton;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation WebImageButton
+@implementation MTWebImageButton
 
 @synthesize imageURL        = _imageURL;
 @synthesize progressHUD     = _progressHUD;

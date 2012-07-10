@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebImageButton : UIControl
+@interface MTWebImageButton : UIControl
 
 @property (strong, nonatomic) NSURL *imageURL;
 @property (assign, nonatomic) BOOL haveProgressHUD;

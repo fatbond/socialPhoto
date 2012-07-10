@@ -6,14 +6,14 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeshtilesPhoto.h"
-#import "MeshtilesUser.h"
+#import "MTPhoto.h"
+#import "MTUser.h"
 
-@interface MeshtilesPhotoDetail : MeshtilesPhoto
+@interface MTPhotoDetail : MTPhoto
 
 @property (strong, nonatomic) NSURL         *photoURL;
 @property (strong, nonatomic) NSString      *caption;
-@property (strong, nonatomic) MeshtilesUser *user;
+@property (strong, nonatomic) MTUser *user;
 @property (strong, nonatomic) NSDate        *timePost;
 
 @end

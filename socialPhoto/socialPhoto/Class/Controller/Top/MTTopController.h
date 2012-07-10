@@ -12,7 +12,7 @@
 
 #define MAX_PAGE_ALLOWED  10
 
-@interface MTMeshViewController : UINavigationController
+@interface MTTopController : UINavigationController
 
 @property (strong, nonatomic) UISegmentedControl *segmentedControl;
 @property (strong, nonatomic) NSArray *segmentViewControllers;

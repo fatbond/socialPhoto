@@ -14,7 +14,7 @@
     LocationPin *addAnnotation;
     NSMutableArray *listImageToShow;
     MTImageGridView *imageGridView;
-    MeshtilesFetcher *fetcher;
+    MTFetcher *fetcher;
 }
 @end
 
@@ -35,7 +35,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://maps.google.com/maps/geo?q=%@&output=csv&key=YourGoogleMapAPIKey", 
                            [self.search.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     // Get result data from Google API, a CSV string
-    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]];
+    NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil];
         
     // Seperate by ,
     NSArray *listItems = [locationString componentsSeparatedByString:@","];
@@ -100,13 +100,13 @@
 }
 
 
-- (void)meshtilesFetcher:(MeshtilesFetcher *)fetcher didFinishedGetListUserPhoto:(NSArray *)photos
+- (void)meshtilesFetcher:(MTFetcher *)fetcher didFinishedGetListUserPhoto:(NSArray *)photos
 {
     int i = 0;    
     for(NSDictionary *photo in photos){    
-        double lon = ((MeshtilesPhoto*)photo).longitude;
-        double lat = ((MeshtilesPhoto*)photo).latitude;
-        NSURL *imageURL = ((MeshtilesPhoto*)photo).thumbURL;
+        double lon = ((MTPhoto*)photo).longitude;
+        double lat = ((MTPhoto*)photo).latitude;
+        NSURL *imageURL = ((MTPhoto*)photo).thumbURL;
         
         if((lon < 0)||(lon > 180)) ;
         else if((lat < -90)&&(lat > 90)) ;
@@ -255,7 +255,7 @@
     imageGridView.haveNextPage = FALSE;
     [imageGridView setBackgroundColor:[UIColor colorWithRed:0.47f green:0.23f blue:0.61f alpha:0.3f]];
     
-    fetcher = [[MeshtilesFetcher alloc] init];
+    fetcher = [[MTFetcher alloc] init];
     [fetcher setDelegate:self];
     
     listImageToShow = [[NSMutableArray alloc] init];

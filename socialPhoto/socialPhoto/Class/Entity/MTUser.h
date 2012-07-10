@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MeshtilesUser : NSObject
+@interface MTUser : NSObject
 
 @property (strong, nonatomic) NSString  *userName;
 @property (strong, nonatomic) NSString  *userId;

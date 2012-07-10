@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeshtilesPhoto.h"
+#import "MTPhoto.h"
 
-@implementation MeshtilesPhoto
+@implementation MTPhoto
 
 @synthesize thumbURL    = _thumbURL;
 @synthesize latitude    = _latitude;

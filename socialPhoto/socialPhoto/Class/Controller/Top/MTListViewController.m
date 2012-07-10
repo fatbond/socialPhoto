@@ -6,18 +6,18 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "MeshtilesPhotoByTagListTableViewController.h"
+#import "MTListViewController.h"
 
-#import "MeshtilesPhotoCell.h"
-#import "MeshtilesPhoto.h"
-#import "MeshtilesPhotoDetail.h"
+#import "MTPhotoCell.h"
+#import "MTPhoto.h"
+#import "MTPhotoDetail.h"
 
-@interface MeshtilesPhotoByTagListTableViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MTListViewController () <UITableViewDataSource, UITableViewDelegate>
 
 
 @end
 
-@implementation MeshtilesPhotoByTagListTableViewController
+@implementation MTListViewController
 
 @synthesize tableView         = _tableView;
 @synthesize photos            = _photos;
@@ -48,9 +48,9 @@
 
 #pragma mark - Setters/getters
 
-- (RefreshableTableView *)tableView {
+- (MTRefreshableTableView *)tableView {
   if (!_tableView) {
-    _tableView = [[RefreshableTableView alloc] initWithFrame:self.view.bounds];
+    _tableView = [[MTRefreshableTableView alloc] initWithFrame:self.view.bounds];
     _tableView.dataSource       = self;
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _tableView.tableViewDelegate = self;
@@ -80,10 +80,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   static NSString *CellIdentifier = @"MeshtilesPhotoCell";
-  MeshtilesPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  MTPhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   
   if (!cell) {
-    cell = [[MeshtilesPhotoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    cell = [[MTPhotoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
   }
   
   // Configure the cell...
@@ -97,7 +97,7 @@
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [MeshtilesPhotoCell cellHeightForFrameWidth:tableView.bounds.size.width andPhoto:[self.photosDetails objectAtIndex:indexPath.row]];
+  return [MTPhotoCell cellHeightForFrameWidth:tableView.bounds.size.width andPhoto:[self.photosDetails objectAtIndex:indexPath.row]];
 }
 
 

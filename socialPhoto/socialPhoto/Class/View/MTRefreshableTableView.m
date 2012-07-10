@@ -6,19 +6,19 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "RefreshableTableView.h"
+#import "MTRefreshableTableView.h"
 
 #import "EGORefreshTableFooterView.h"
 #import "EGORefreshTableHeaderView.h"
 
-@interface RefreshableTableView() <EGORefreshTableFooterDelegate, EGORefreshTableHeaderDelegate, UIScrollViewDelegate>
+@interface MTRefreshableTableView() <EGORefreshTableFooterDelegate, EGORefreshTableHeaderDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) EGORefreshTableFooterView *refreshFooterView;
 @property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 @end
 
-@implementation RefreshableTableView
+@implementation MTRefreshableTableView
 
 @synthesize refreshFooterView = _refreshFooterView;
 @synthesize refreshHeaderView = _refreshHeaderView;

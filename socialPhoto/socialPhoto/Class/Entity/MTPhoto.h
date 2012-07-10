@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MeshtilesPhoto : NSObject
+@interface MTPhoto : NSObject
 
 @property (strong, nonatomic)   NSString    *photoId;
 @property (strong, nonatomic)   NSURL       *thumbURL;

@@ -6,30 +6,30 @@
 //  Copyright (c) 2012 dungnguyen photography. All rights reserved.
 //
 
-#import "MTMeshViewController.h"
+#import "MTTopController.h"
 
-#import "MTPhotoByTagGridViewController.h"
-#import "MeshtilesPhotoByTagListTableViewController.h"
+#import "MTGridController.h"
+#import "MTListViewController.h"
 #import "MTMapController.h"
 
-#import "MeshtilesPhoto.h"
-#import "MeshtilesPhotoDetail.h"
-#import "MeshtilesFetcher.h"
+#import "MTPhoto.h"
+#import "MTPhotoDetail.h"
+#import "MTFetcher.h"
 
-@interface MTMeshViewController () <MeshtilesFetcherDelegate, RefreshableTableViewDelegate>
+@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate>
 
-@property (strong, nonatomic) MTPhotoByTagGridViewController *gridViewController;
-@property (strong, nonatomic) MeshtilesPhotoByTagListTableViewController *listViewController;
+@property (strong, nonatomic) MTGridController *gridViewController;
+@property (strong, nonatomic) MTListViewController *listViewController;
 @property (strong, nonatomic) MTMapController *mapViewController;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSArray *photosDetails;
 @property (assign, nonatomic) NSUInteger currentPage;
-@property (strong, nonatomic) MeshtilesFetcher *meshtilesFetcher;
+@property (strong, nonatomic) MTFetcher *meshtilesFetcher;
 
 @end
 
-@implementation MTMeshViewController
+@implementation MTTopController
 
 @synthesize segmentedControl = _segmentedControl;
 @synthesize segmentsController = _segmentsController;
@@ -80,7 +80,7 @@
     
     // Download the detail of all photos
     NSMutableArray *photoIds = [[NSMutableArray alloc] init];
-    for (MeshtilesPhoto *photo in _photos) {
+    for (MTPhoto *photo in _photos) {
       [photoIds addObject:photo.photoId];
     }
     
@@ -94,18 +94,18 @@
   self.listViewController.currentPage = _currentPage;
 }
 
-- (MeshtilesFetcher *)meshtilesFetcher {
+- (MTFetcher *)meshtilesFetcher {
   if (!_meshtilesFetcher) {
-    _meshtilesFetcher = [[MeshtilesFetcher alloc] init];
+    _meshtilesFetcher = [[MTFetcher alloc] init];
     _meshtilesFetcher.delegate = self;
   }
   
   return _meshtilesFetcher;
 }
 
-- (MTPhotoByTagGridViewController *)gridViewController {
+- (MTGridController *)gridViewController {
   if (!_gridViewController) {
-    _gridViewController = [[MTPhotoByTagGridViewController alloc] init];
+    _gridViewController = [[MTGridController alloc] init];
     _gridViewController.title = @"Grid";
     _gridViewController.imageGridView.refreshDelegate = self;
   }
@@ -113,9 +113,9 @@
   return _gridViewController;
 }
 
-- (MeshtilesPhotoByTagListTableViewController *)listViewController {
+- (MTListViewController *)listViewController {
   if (!_listViewController) {
-    _listViewController = [[MeshtilesPhotoByTagListTableViewController alloc] init];
+    _listViewController = [[MTListViewController alloc] init];
     _listViewController.title = @"List";
     _listViewController.tableView.refreshDelegate = self;
   }
@@ -193,7 +193,7 @@ return _mapViewController;
 
 #pragma mark - MeshtilesFetcherDelegate methods
 
-- (void)meshtilesFetcher:(MeshtilesFetcher *)fetcher didFinishedGetListUserPhoto:(NSArray *)photos {
+- (void)meshtilesFetcher:(MTFetcher *)fetcher didFinishedGetListUserPhoto:(NSArray *)photos {
   if (fetcher == self.meshtilesFetcher) {
     // merge the before photo array with the newly fetched array
     
@@ -217,7 +217,7 @@ return _mapViewController;
   }
 }
 
-- (void)meshtilesFetcherDidFailedGetListUserPhoto:(MeshtilesFetcher *)fetcher {
+- (void)meshtilesFetcherDidFailedGetListUserPhoto:(MTFetcher *)fetcher {
   if (fetcher == self.meshtilesFetcher) {
     [self displayConnectionErrorAlert];
     
@@ -225,7 +225,7 @@ return _mapViewController;
   }
 }
 
-- (void)meshtilesFetcher:(MeshtilesFetcher *)fetcher didFinishedGetListPhotoDetailFromPhotoIds:(NSArray *)photosDetails {
+- (void)meshtilesFetcher:(MTFetcher *)fetcher didFinishedGetListPhotoDetailFromPhotoIds:(NSArray *)photosDetails {
   if (fetcher == self.meshtilesFetcher) {
     self.photosDetails = photosDetails;
     
@@ -233,7 +233,7 @@ return _mapViewController;
   }
 }
 
-- (void)meshtilesFetcherDidFailedGetListPhotoDetailFromPhotoIds:(MeshtilesFetcher *)fetcher {
+- (void)meshtilesFetcherDidFailedGetListPhotoDetailFromPhotoIds:(MTFetcher *)fetcher {
   if (fetcher == self.meshtilesFetcher) {
     [self displayConnectionErrorAlert];
   }
@@ -243,7 +243,7 @@ return _mapViewController;
 
 #pragma mark - RefreshableTableViewDelegate
 
-- (BOOL)refreshableTableViewWillRefreshData:(RefreshableTableView *)tableView {
+- (BOOL)refreshableTableViewWillRefreshData:(MTRefreshableTableView *)tableView {
   
   [self refreshData];
   
@@ -251,7 +251,7 @@ return _mapViewController;
   return YES;
 }
 
-- (BOOL)refreshableTableViewWillLoadNextPage:(RefreshableTableView *)tableView {
+- (BOOL)refreshableTableViewWillLoadNextPage:(MTRefreshableTableView *)tableView {
   
   [self loadNextPage];
   
