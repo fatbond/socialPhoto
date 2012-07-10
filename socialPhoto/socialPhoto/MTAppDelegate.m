@@ -11,6 +11,7 @@
 @implementation MTAppDelegate
 
 @synthesize window = _window;
+@synthesize tab = _tab;
 
 - (void)dealloc
 {
@@ -20,11 +21,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.tab = [[CustomTabBarController alloc] init];
+    [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
+    
+    UIViewController *vc1 = [[UIViewController alloc] init];
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    UIViewController *vc3 = [[UIViewController alloc] init];
+    UIViewController *vc4 = [[UIViewController alloc] init];
+    UIViewController *vc5 = [[UIViewController alloc] init];
+    
+    [self.tab addTabItemWithImage:@"tab_mesh.png" andSelectedImage:@"tab_mesh_active.png"];
+    [self.tab addTabItemWithImage:@"tab_trend_tag.png" andSelectedImage:@"tab_trend_tag_active.png"];
+    [self.tab addTabItemWithImage:@"tab_shot.png" andSelectedImage:@"tab_shot_active.png"];
+    [self.tab addTabItemWithImage:@"tab_timeline.png" andSelectedImage:@"tab_timeline_active.png"];
+    [self.tab addTabItemWithImage:@"tab_user.png" andSelectedImage:@"tab_user_active.png"];
+    
+    
+    NSArray *viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, vc4, vc5, nil];
+    
+    [self.tab setViewControllers:viewControllers];
+    
+    [self.window addSubview:[self.tab view]];
+    
     [self.window makeKeyAndVisible];
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

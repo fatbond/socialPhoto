@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomTabBarController.h"
 
-@interface MTAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) CustomTabBarController *tab;
 
 @end
