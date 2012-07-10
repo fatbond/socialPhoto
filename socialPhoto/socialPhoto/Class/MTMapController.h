@@ -11,12 +11,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import "UIImageView+WebCache.h"
 #import "SBJson.h"
-#import "MapPin.h"
+#import "LocationPin.h"
 #import "MeshtilesFetcher.h"
 #import "ImagePin.h"
 #import "ImageGridView.h"
 
-@interface MapViewController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, MeshtilesFetcherDelegate, ImageGridViewDelegate, ImageGridViewDataSource>
+@interface MTMapController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, MeshtilesFetcherDelegate, ImageGridViewDelegate, ImageGridViewDataSource>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *search;
 

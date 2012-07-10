@@ -25,8 +25,8 @@
     self.tab = [[CustomTabBarController alloc] init];
     [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
     
-    UIViewController *vc1 = [[UIViewController alloc] init];
-    MapViewController *vc2 = [[MapViewController alloc] init];
+    MTTopController *vc1 = [[MTTopController alloc] init];
+    MTMapController *vc2 = [[MTMapController alloc] init];
     UIViewController *vc3 = [[UIViewController alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];
     UIViewController *vc5 = [[UIViewController alloc] init];

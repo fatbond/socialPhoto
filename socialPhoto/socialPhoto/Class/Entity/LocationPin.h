@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface MapPin : NSObject<MKAnnotation> {
+@interface LocationPin : NSObject<MKAnnotation> {
     // CLLocationCoordinate2D coordinate;
     NSString *mTitle;
     NSString *mSubTitle;

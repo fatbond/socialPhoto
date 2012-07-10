@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Dailymotion. All rights reserved.
 //
 
-#import "MapPin.h"
+#import "LocationPin.h"
 
-@implementation MapPin
+@implementation LocationPin
 @synthesize coordinate;
 
 - (NSString *)subtitle{

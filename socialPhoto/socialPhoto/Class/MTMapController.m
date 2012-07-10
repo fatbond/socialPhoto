@@ -6,19 +6,19 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "MTMapController.h"
 
-@interface MapViewController(){
+@interface MTMapController(){
 @private
     SBJsonParser *parser;    
-    MapPin *addAnnotation;
+    LocationPin *addAnnotation;
     NSMutableArray *listImageToShow;
     ImageGridView *imageGridView;
     MeshtilesFetcher *fetcher;
 }
 @end
 
-@implementation MapViewController
+@implementation MTMapController
 @synthesize search = _search;
 @synthesize myMap = _myMap;
 @synthesize locationManager = _locationManager;
@@ -70,7 +70,7 @@
         [self.myMap removeAnnotation:addAnnotation];
          addAnnotation = nil;
     }
-    addAnnotation = [[MapPin alloc] initWithCoordinate:location];
+    addAnnotation = [[LocationPin alloc] initWithCoordinate:location];
     [self.myMap addAnnotation:addAnnotation];
     [self.myMap setRegion:region animated:TRUE];
     [self.myMap regionThatFits:region];
@@ -118,7 +118,7 @@
     static NSString *AnnotationViewID = @"annotationViewID";
     static NSString *ImagePinID = @"imagePinID";
       
-    if([annotation isKindOfClass:[MapPin class]]){
+    if([annotation isKindOfClass:[LocationPin class]]){
         MKPinAnnotationView *annView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
         annView.pinColor = MKPinAnnotationColorRed;
         annView.animatesDrop = YES;

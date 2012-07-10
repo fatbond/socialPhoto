@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h> 
 #import <CoreLocation/CoreLocation.h>
 #import "SBJson.h"
-#import "MapPin.h"
+#import "LocationPin.h"
 #import "ImagePin.h"
 #import "ImageGridView.h"
 

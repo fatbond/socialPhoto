@@ -91,10 +91,10 @@
 		DBA4F76B15ABDC0B00B8857A /* compass@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F76615ABDC0B00B8857A /* compass@2x.png */; };
 		DBA4F76C15ABDC0B00B8857A /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F76715ABDC0B00B8857A /* placeholder.png */; };
 		DBA4F77115ABDC7100B8857A /* ImagePin.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F76E15ABDC7100B8857A /* ImagePin.m */; };
-		DBA4F77215ABDC7100B8857A /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F77015ABDC7100B8857A /* MapPin.m */; };
-		DBA4F78315ABDCDE00B8857A /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78015ABDCDD00B8857A /* MapViewController.m */; };
+		DBA4F77215ABDC7100B8857A /* LocationPin.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F77015ABDC7100B8857A /* LocationPin.m */; };
+		DBA4F78315ABDCDE00B8857A /* MTMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78015ABDCDD00B8857A /* MTMapController.m */; };
 		DBA4F78415ABDCDE00B8857A /* ImageGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78215ABDCDD00B8857A /* ImageGridView.m */; };
-		DBA4F78615ABDEFB00B8857A /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F78515ABDEFA00B8857A /* MapViewController.xib */; };
+		DBA4F78615ABDEFB00B8857A /* MTMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F78515ABDEFA00B8857A /* MTMapController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -243,13 +243,13 @@
 		DBA4F76715ABDC0B00B8857A /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		DBA4F76D15ABDC7100B8857A /* ImagePin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePin.h; sourceTree = "<group>"; };
 		DBA4F76E15ABDC7100B8857A /* ImagePin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePin.m; sourceTree = "<group>"; };
-		DBA4F76F15ABDC7100B8857A /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
-		DBA4F77015ABDC7100B8857A /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
-		DBA4F77F15ABDCDD00B8857A /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../../MapViewController.h; sourceTree = "<group>"; };
-		DBA4F78015ABDCDD00B8857A /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../../MapViewController.m; sourceTree = "<group>"; };
+		DBA4F76F15ABDC7100B8857A /* LocationPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPin.h; sourceTree = "<group>"; };
+		DBA4F77015ABDC7100B8857A /* LocationPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPin.m; sourceTree = "<group>"; };
+		DBA4F77F15ABDCDD00B8857A /* MTMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTMapController.h; path = ../../MTMapController.h; sourceTree = "<group>"; };
+		DBA4F78015ABDCDD00B8857A /* MTMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTMapController.m; path = ../../MTMapController.m; sourceTree = "<group>"; };
 		DBA4F78115ABDCDD00B8857A /* ImageGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGridView.h; sourceTree = "<group>"; };
 		DBA4F78215ABDCDD00B8857A /* ImageGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGridView.m; sourceTree = "<group>"; };
-		DBA4F78515ABDEFA00B8857A /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ../../MapViewController.xib; sourceTree = "<group>"; };
+		DBA4F78515ABDEFA00B8857A /* MTMapController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MTMapController.xib; path = ../../MTMapController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,11 +367,11 @@
 		251D6B4D15A55498006F5447 /* Top */ = {
 			isa = PBXGroup;
 			children = (
-				DBA4F77F15ABDCDD00B8857A /* MapViewController.h */,
-				DBA4F78015ABDCDD00B8857A /* MapViewController.m */,
-				DBA4F78515ABDEFA00B8857A /* MapViewController.xib */,
 				251D6B5515A554B6006F5447 /* MTTopController.h */,
 				251D6B5615A554B6006F5447 /* MTTopController.m */,
+				DBA4F77F15ABDCDD00B8857A /* MTMapController.h */,
+				DBA4F78015ABDCDD00B8857A /* MTMapController.m */,
+				DBA4F78515ABDEFA00B8857A /* MTMapController.xib */,
 				251D6B5B15A554D6006F5447 /* MTGridController.h */,
 				251D6B5C15A554D6006F5447 /* MTGridController.m */,
 				251D6B5E15A554E7006F5447 /* MTSearchTagController.h */,
@@ -383,10 +383,7 @@
 		251D6B4E15A55498006F5447 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				DBA4F76D15ABDC7100B8857A /* ImagePin.h */,
-				DBA4F76E15ABDC7100B8857A /* ImagePin.m */,
-				DBA4F76F15ABDC7100B8857A /* MapPin.h */,
-				DBA4F77015ABDC7100B8857A /* MapPin.m */,
+				DBA4F78715ABE8A300B8857A /* AnnotationPin */,
 				4A692D8415ABCE7D0035F566 /* MeshtilesFetcher.h */,
 				4A692D8515ABCE7D0035F566 /* MeshtilesFetcher.m */,
 				4A692D8615ABCE7D0035F566 /* MeshtilesPhoto.h */,
@@ -603,11 +600,6 @@
 			isa = PBXGroup;
 			children = (
 				DBA4F76215ABDBED00B8857A /* ImageTag */,
-				DBA4F76315ABDC0B00B8857A /* map_image_bg.png */,
-				DBA4F76415ABDC0B00B8857A /* map_image_bg@2x.png */,
-				DBA4F76515ABDC0B00B8857A /* compass.png */,
-				DBA4F76615ABDC0B00B8857A /* compass@2x.png */,
-				DBA4F76715ABDC0B00B8857A /* placeholder.png */,
 				DBA4F73E15ABD97A00B8857A /* Tab */,
 				DBA4F73D15ABD97100B8857A /* Icon */,
 			);
@@ -643,8 +635,24 @@
 		DBA4F76215ABDBED00B8857A /* ImageTag */ = {
 			isa = PBXGroup;
 			children = (
+				DBA4F76315ABDC0B00B8857A /* map_image_bg.png */,
+				DBA4F76415ABDC0B00B8857A /* map_image_bg@2x.png */,
+				DBA4F76515ABDC0B00B8857A /* compass.png */,
+				DBA4F76615ABDC0B00B8857A /* compass@2x.png */,
+				DBA4F76715ABDC0B00B8857A /* placeholder.png */,
 			);
 			name = ImageTag;
+			sourceTree = "<group>";
+		};
+		DBA4F78715ABE8A300B8857A /* AnnotationPin */ = {
+			isa = PBXGroup;
+			children = (
+				DBA4F76D15ABDC7100B8857A /* ImagePin.h */,
+				DBA4F76E15ABDC7100B8857A /* ImagePin.m */,
+				DBA4F76F15ABDC7100B8857A /* LocationPin.h */,
+				DBA4F77015ABDC7100B8857A /* LocationPin.m */,
+			);
+			name = AnnotationPin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,7 +727,7 @@
 				DBA4F76A15ABDC0B00B8857A /* compass.png in Resources */,
 				DBA4F76B15ABDC0B00B8857A /* compass@2x.png in Resources */,
 				DBA4F76C15ABDC0B00B8857A /* placeholder.png in Resources */,
-				DBA4F78615ABDEFB00B8857A /* MapViewController.xib in Resources */,
+				DBA4F78615ABDEFB00B8857A /* MTMapController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -782,8 +790,8 @@
 				4A692D8F15ABCE7D0035F566 /* MeshtilesUser.m in Sources */,
 				DBA4066415ABD6A600ED2B67 /* CustomTabBarController.m in Sources */,
 				DBA4F77115ABDC7100B8857A /* ImagePin.m in Sources */,
-				DBA4F77215ABDC7100B8857A /* MapPin.m in Sources */,
-				DBA4F78315ABDCDE00B8857A /* MapViewController.m in Sources */,
+				DBA4F77215ABDC7100B8857A /* LocationPin.m in Sources */,
+				DBA4F78315ABDCDE00B8857A /* MTMapController.m in Sources */,
 				DBA4F78415ABDCDE00B8857A /* ImageGridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
