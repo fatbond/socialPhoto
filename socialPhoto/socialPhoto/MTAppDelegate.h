@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomTabBarController.h"
+#import "MapViewController.h"
 
 @interface MTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarDelegate>
 
