@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#define queue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) 
-#define URL [NSURL URLWithString:@"http://ec2-107-20-246-0.compute-1.amazonaws.com/api/View/getListPhotoByTags?user_id=1d6311db-6a2e-4362-a3c3-2a7a7814f7a4&tag=cat&page_index=1"] 
-
 #import "MapViewController.h"
 
 @interface MapViewController(){
@@ -17,6 +14,7 @@
     MapPin *addAnnotation;
     NSMutableArray *listImageToShow;
     ImageGridView *imageGridView;
+    MeshtilesFetcher *fetcher;
 }
 @end
 
@@ -31,6 +29,7 @@
                            [self.search.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     // Get result data from Google API, a CSV string
     NSString *locationString = [NSString stringWithContentsOfURL:[NSURL URLWithString:urlString]];
+        
     // Seperate by ,
     NSArray *listItems = [locationString componentsSeparatedByString:@","];
     
@@ -88,33 +87,31 @@
 
 - (void)fetchedData{
     //parse out the json data   
-    NSString *string = [NSString stringWithContentsOfURL:URL];
+    // URL is complete by using USERNAME and TAG
     
-    NSDictionary *json = [string JSONValue];
-    
-    NSArray* album = [json objectForKey:@"photo"];
-    
-    int i = 0;
-    
-    for(NSDictionary *photo in album){    
-        NSNumber *lon = [photo objectForKey:@"longitude"];
-        NSNumber *lat = [photo objectForKey:@"latitude"];
-        NSURL *imageURL = [NSURL URLWithString:[photo objectForKey:@"url_thumb"]];
+    [fetcher getListUserPhotoByTags:@"cat" andUserId:@"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4" atPageIndex:1];    
+}
+
+
+- (void)meshtilesFetcher:(MeshtilesFetcher *)fetcher didFinishedGetListUserPhoto:(NSArray *)photos
+{
+    int i = 0;    
+    for(NSDictionary *photo in photos){    
+        double lon = ((MeshtilesPhoto*)photo).longitude;
+        double lat = ((MeshtilesPhoto*)photo).latitude;
+        NSURL *imageURL = ((MeshtilesPhoto*)photo).thumbURL;
         
-        float flon = [lon floatValue];
-        float flat = [lat floatValue];
-        
-        if((flon < 0)||(flon > 180)) ;
-        else if((flat < -90)&&(flat > 90)) ;
+        if((lon < 0)||(lon > 180)) ;
+        else if((lat < -90)&&(lat > 90)) ;
         else {
-            NSLog(@"Lon(%f) + Lat(%f)", flon, flat);
-            [self pinImageWithURL:imageURL atLongitude:flon atLatitude:flat];
+            [self pinImageWithURL:imageURL atLongitude:lon atLatitude:lat];
             i++;
         }
-        
         // if(i >= 3) break; // Only load 3 image
     }
+    
 }
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
 {
@@ -246,6 +243,9 @@
     imageGridView.numberOfImagesPerRow = 4;
     imageGridView.delegate = self;
     imageGridView.dataSource = self;
+    
+    fetcher = [[MeshtilesFetcher alloc] init];
+    [fetcher setDelegate:self];
     
     NSOperationQueue *myQueue = [[NSOperationQueue alloc] init];
     NSInvocationOperation *opearation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fetchedData) object:nil];
