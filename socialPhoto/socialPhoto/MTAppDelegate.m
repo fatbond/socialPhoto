@@ -27,7 +27,7 @@
     
     MTTopController *vc1 = [[MTTopController alloc] init];
     MTMapController *vc2 = [[MTMapController alloc] init];
-    UIViewController *vc3 = [[UIViewController alloc] init];
+    MTPhotoView *vc3 = [[MTPhotoView alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];
     UIViewController *vc5 = [[UIViewController alloc] init];
     

@@ -13,7 +13,7 @@
     SBJsonParser *parser;    
     LocationPin *addAnnotation;
     NSMutableArray *listImageToShow;
-    ImageGridView *imageGridView;
+    MTImageGridView *imageGridView;
     MeshtilesFetcher *fetcher;
 }
 @end
@@ -22,6 +22,13 @@
 @synthesize search = _search;
 @synthesize myMap = _myMap;
 @synthesize locationManager = _locationManager;
+@synthesize photos = _photos;
+
+-(void) setPhotos:(NSArray *)photos
+{
+    _photos = photos;
+    [self meshtilesFetcher:fetcher didFinishedGetListUserPhoto:_photos];
+}
 
 - (CLLocationCoordinate2D) addressLocation {
     // Construct Google API for searching
@@ -85,11 +92,11 @@
     [self.myMap addAnnotation:annView]; 
 }
 
-- (void)fetchedData{
-    //parse out the json data   
+- (void)fetchedData:(NSString *)tag
+        withUserID:(NSString *)id{
+    // parse out the json data   
     // URL is complete by using USERNAME and TAG
-    
-    [fetcher getListUserPhotoByTags:@"cat" andUserId:@"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4" atPageIndex:1];    
+    [fetcher getListUserPhotoByTags:tag andUserId:id atPageIndex:1];    
 }
 
 
@@ -109,7 +116,6 @@
         }
         // if(i >= 3) break; // Only load 3 image
     }
-    
 }
 
 
@@ -117,7 +123,8 @@
 {
     static NSString *AnnotationViewID = @"annotationViewID";
     static NSString *ImagePinID = @"imagePinID";
-      
+     
+    // Create pin for found location
     if([annotation isKindOfClass:[LocationPin class]]){
         MKPinAnnotationView *annView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
         annView.pinColor = MKPinAnnotationColorRed;
@@ -127,6 +134,7 @@
         return annView;
     }
     
+    // Create pin for an image
     if([annotation isKindOfClass:[ImagePin class]]){
         MKAnnotationView *annView = [mapView dequeueReusableAnnotationViewWithIdentifier:ImagePinID];
         if (annView == nil)
@@ -141,8 +149,6 @@
         myView.frame = CGRectMake(7, -23, 38, 38);
         
         annView.frame = CGRectMake(0, -23, 48, 38);
-//        annView.canShowCallout = NO;
-//        annView.calloutOffset = CGPointMake(0, 0);
        
         [annView insertSubview:bgView atIndex:0];
         [annView insertSubview:myView atIndex:1];
@@ -150,6 +156,7 @@
         return annView;
     }
     
+    // Return nil if its type is current location
     return nil;
 }
 
@@ -160,6 +167,7 @@
         
         [listImageToShow removeAllObjects];
         
+        // Check others image is overlapped or not
         for(ImagePin *ann in self.myMap.annotations)
             if([ann isKindOfClass:[ImagePin class]]){
                 MKAnnotationView *annView = [self mapView:self.myMap viewForAnnotation:ann];
@@ -175,6 +183,7 @@
                 }
             }
         
+        // Show grid view if any >= 2 images overlaps
         if([listImageToShow count] == 1)
         {
             view.bounds = CGRectMake(0, 0, 52, 52);
@@ -196,6 +205,7 @@
         view.bounds = CGRectMake(0, 0, 38, 38);
         ((UIImageView*)[view.subviews objectAtIndex:0]).frame = CGRectMake(0, -28, 56, 56);
         ((UIImageView*)[view.subviews objectAtIndex:1]).frame = CGRectMake(7, -23, 38, 38);
+        [imageGridView removeFromSuperview];
     }
 }
 
@@ -203,23 +213,23 @@
 - (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {  
     if(self.search.text != nil) [self showAddress:[self addressLocation]];
 }
+
+// Show current location
 - (IBAction)showCurrentLocation:(id)sender {
     [self.myMap setCenterCoordinate:self.locationManager.location.coordinate animated:TRUE];
 }
 
 
-- (NSInteger) numberOfImagesInImageGridView:(ImageGridView *)imageGridView
+- (NSUInteger) numberOfImagesInImageGridView:(MTImageGridView *)imageGridView
 {
     return [listImageToShow count];
 }
 
--(NSURL*) imageURLAtIndex:(NSUInteger)index
-{
+-(NSURL*) imageURLAtIndex:(NSUInteger)index{
     return [((ImagePin*)((MKAnnotationView*)[listImageToShow objectAtIndex:index]).annotation) getURL];
 }
 
--(void) imageTappedAtIndex:(NSUInteger)index
-{
+-(void) imageTappedAtIndex:(NSUInteger)index{
 }
 
 #pragma mark - View lifecycle
@@ -235,23 +245,23 @@
     self.locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
     [self.locationManager startUpdatingLocation];
-    
-    //[self.search setBackgroundImage:[UIImage imageNamed:@"search_form_bg.png"]];
-    
-    imageGridView = [[ImageGridView alloc] init];
+        
+    imageGridView = [[MTImageGridView alloc] init];
     imageGridView.frame = CGRectMake(50, 50, 200, 200);
     imageGridView.numberOfImagesPerRow = 4;
-    imageGridView.delegate = self;
-    imageGridView.dataSource = self;
+    imageGridView.gridDelegate = self;
+    imageGridView.gridDataSource = self;
+    imageGridView.canRefresh = FALSE;
+    imageGridView.haveNextPage = FALSE;
+    [imageGridView setBackgroundColor:[UIColor colorWithRed:0.47f green:0.23f blue:0.61f alpha:0.3f]];
     
     fetcher = [[MeshtilesFetcher alloc] init];
     [fetcher setDelegate:self];
     
-    NSOperationQueue *myQueue = [[NSOperationQueue alloc] init];
-    NSInvocationOperation *opearation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(fetchedData) object:nil];
-    [myQueue addOperation:opearation];
-    
     listImageToShow = [[NSMutableArray alloc] init];
+    
+    // JUST FOR TEST
+    [self fetchedData:@"cat" withUserID:@"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4"];
 }
 
 - (void)viewDidUnload

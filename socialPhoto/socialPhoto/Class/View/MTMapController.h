@@ -14,14 +14,16 @@
 #import "LocationPin.h"
 #import "MeshtilesFetcher.h"
 #import "ImagePin.h"
-#import "ImageGridView.h"
+#import "MTImageGridView.h"
 
-@interface MTMapController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, MeshtilesFetcherDelegate, ImageGridViewDelegate, ImageGridViewDataSource>
+@interface MTMapController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, MeshtilesFetcherDelegate, MTImageGridViewDelegate, MTImageGridViewDatasource>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *search;
 
 @property (unsafe_unretained, nonatomic) IBOutlet MKMapView *myMap;
 
-@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) NSArray *photos;
 
 @end

@@ -10,6 +10,7 @@
 #import "CustomTabBarController.h"
 #import "MTMapController.h"
 #import "MTTopController.h"
+#import "MTPhotoView.h"
 
 @interface MTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarDelegate>
 
