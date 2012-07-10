@@ -9,8 +9,6 @@
 #import "UIButton+WebCache.h"
 #import "SDWebImageManager.h"
 
-UIActivityIndicatorView *aiView;
-
 @implementation UIButton (WebCache)
 
 - (void)setImageWithURL:(NSURL *)url
@@ -24,18 +22,7 @@ UIActivityIndicatorView *aiView;
 }
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
-{    
-    
-    if ([self viewWithTag:9999] != nil) {
-        [[self viewWithTag:9999] removeFromSuperview];
-    }
-    
-    aiView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((self.frame.size.width - 20)/2, (self.frame.size.height - 20)/2, 20, 20)];
-    [aiView startAnimating];
-    [aiView setTag:9999];
-    [self addSubview:aiView];
-    [aiView release];
-    
+{
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
     // Remove in progress downloader from queue
@@ -164,9 +151,6 @@ UIActivityIndicatorView *aiView;
 
 - (void)webImageManager:(SDWebImageManager *)imageManager didFinishWithImage:(UIImage *)image forURL:(NSURL *)url userInfo:(NSDictionary *)info
 {
-    if ([self viewWithTag:9999] != nil) {
-        [[self viewWithTag:9999] removeFromSuperview];
-    }    
     if ([[info valueForKey:@"type"] isEqualToString:@"background"])
     {
         [self setBackgroundImage:image forState:UIControlStateNormal];

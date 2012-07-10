@@ -13,11 +13,6 @@
 @synthesize window = _window;
 @synthesize tab = _tab;
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

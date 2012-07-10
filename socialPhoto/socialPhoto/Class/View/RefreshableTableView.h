@@ -17,7 +17,7 @@
 @property (nonatomic, assign) BOOL isLoadingNextPage;
 @property (nonatomic, assign) BOOL haveNextPage;
 @property (nonatomic, assign) BOOL canRefresh;
-@property (nonatomic, assign) id <RefreshableTableViewDelegate> refreshDelegate;
+@property (nonatomic, unsafe_unretained) id <RefreshableTableViewDelegate> refreshDelegate;
 
 @end
 

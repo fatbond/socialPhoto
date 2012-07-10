@@ -20,7 +20,7 @@
 
 @interface MeshtilesFetcher : NSObject <ASIHTTPRequestDelegate>
 
-@property (assign) id <MeshtilesFetcherDelegate> delegate;
+@property (unsafe_unretained) id <MeshtilesFetcherDelegate> delegate;
 
 - (void)getListUserPhotoByTags:(NSString *)tag 
                        andUserId:(NSString *)userId 

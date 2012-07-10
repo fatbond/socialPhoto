@@ -9,7 +9,7 @@
 #import "MTImageGridView.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "UIButton+WebCache.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 #define CELL_RATIO    18.75
 

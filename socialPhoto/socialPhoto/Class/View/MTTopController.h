@@ -10,6 +10,6 @@
 
 @interface MTTopController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UINavigationBar *navi;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navi;
 
 @end

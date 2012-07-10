@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h> 
 #import <CoreLocation/CoreLocation.h>
-#import "UIImageView+WebCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "SBJson.h"
 #import "LocationPin.h"
 #import "MeshtilesFetcher.h"
