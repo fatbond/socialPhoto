@@ -49,6 +49,8 @@
         }
         [self.view addSubview:button];
     } 
+    
+    [[myTabButton objectAtIndex:0] setSelected:true];
 }
 
 - (void) changeBackgroundImage:(UIImage*)backgroundImage

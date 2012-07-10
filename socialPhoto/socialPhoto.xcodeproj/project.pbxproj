@@ -11,7 +11,6 @@
 		251D6B3715A55173006F5447 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B3215A55173006F5447 /* main.m */; };
 		251D6B3B15A5524F006F5447 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 251D6B3D15A5524F006F5447 /* Localizable.strings */; };
 		251D6B5415A554A7006F5447 /* MTLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5315A554A7006F5447 /* MTLoginController.m */; };
-		251D6B5715A554B6006F5447 /* MTTopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5615A554B6006F5447 /* MTTopController.m */; };
 		251D6B5D15A554D6006F5447 /* MTGridController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5C15A554D6006F5447 /* MTGridController.m */; };
 		251D6B6015A554E7006F5447 /* MTSearchTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5F15A554E7006F5447 /* MTSearchTagController.m */; };
 		251D6B6315A554FE006F5447 /* MTSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6215A554FE006F5447 /* MTSignUpController.m */; };
@@ -95,6 +94,8 @@
 		DBA4F78315ABDCDE00B8857A /* MTMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78015ABDCDD00B8857A /* MTMapController.m */; };
 		DBA4F78415ABDCDE00B8857A /* ImageGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78215ABDCDD00B8857A /* ImageGridView.m */; };
 		DBA4F78615ABDEFB00B8857A /* MTMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F78515ABDEFA00B8857A /* MTMapController.xib */; };
+		DBA4F79115ABFFD100B8857A /* MTTopController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4F78F15ABFFD100B8857A /* MTTopController.m */; };
+		DBA4F79215ABFFD100B8857A /* MTTopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBA4F79015ABFFD100B8857A /* MTTopController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,8 +108,6 @@
 		251D6B3E15A55257006F5447 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		251D6B5215A554A7006F5447 /* MTLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTLoginController.h; sourceTree = "<group>"; };
 		251D6B5315A554A7006F5447 /* MTLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTLoginController.m; sourceTree = "<group>"; };
-		251D6B5515A554B6006F5447 /* MTTopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTopController.h; sourceTree = "<group>"; };
-		251D6B5615A554B6006F5447 /* MTTopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTopController.m; sourceTree = "<group>"; };
 		251D6B5B15A554D6006F5447 /* MTGridController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTGridController.h; sourceTree = "<group>"; };
 		251D6B5C15A554D6006F5447 /* MTGridController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTGridController.m; sourceTree = "<group>"; };
 		251D6B5E15A554E7006F5447 /* MTSearchTagController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSearchTagController.h; sourceTree = "<group>"; };
@@ -250,6 +249,9 @@
 		DBA4F78115ABDCDD00B8857A /* ImageGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageGridView.h; sourceTree = "<group>"; };
 		DBA4F78215ABDCDD00B8857A /* ImageGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageGridView.m; sourceTree = "<group>"; };
 		DBA4F78515ABDEFA00B8857A /* MTMapController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MTMapController.xib; path = ../../MTMapController.xib; sourceTree = "<group>"; };
+		DBA4F78E15ABFFD100B8857A /* MTTopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTopController.h; sourceTree = SOURCE_ROOT; };
+		DBA4F78F15ABFFD100B8857A /* MTTopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTopController.m; sourceTree = SOURCE_ROOT; };
+		DBA4F79015ABFFD100B8857A /* MTTopController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTopController.xib; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,8 +369,9 @@
 		251D6B4D15A55498006F5447 /* Top */ = {
 			isa = PBXGroup;
 			children = (
-				251D6B5515A554B6006F5447 /* MTTopController.h */,
-				251D6B5615A554B6006F5447 /* MTTopController.m */,
+				DBA4F78E15ABFFD100B8857A /* MTTopController.h */,
+				DBA4F78F15ABFFD100B8857A /* MTTopController.m */,
+				DBA4F79015ABFFD100B8857A /* MTTopController.xib */,
 				DBA4F77F15ABDCDD00B8857A /* MTMapController.h */,
 				DBA4F78015ABDCDD00B8857A /* MTMapController.m */,
 				DBA4F78515ABDEFA00B8857A /* MTMapController.xib */,
@@ -728,6 +731,7 @@
 				DBA4F76B15ABDC0B00B8857A /* compass@2x.png in Resources */,
 				DBA4F76C15ABDC0B00B8857A /* placeholder.png in Resources */,
 				DBA4F78615ABDEFB00B8857A /* MTMapController.xib in Resources */,
+				DBA4F79215ABFFD100B8857A /* MTTopController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,7 +745,6 @@
 				251D6B3515A55173006F5447 /* MTAppDelegate.m in Sources */,
 				251D6B3715A55173006F5447 /* main.m in Sources */,
 				251D6B5415A554A7006F5447 /* MTLoginController.m in Sources */,
-				251D6B5715A554B6006F5447 /* MTTopController.m in Sources */,
 				251D6B5D15A554D6006F5447 /* MTGridController.m in Sources */,
 				251D6B6015A554E7006F5447 /* MTSearchTagController.m in Sources */,
 				251D6B6315A554FE006F5447 /* MTSignUpController.m in Sources */,
@@ -793,6 +796,7 @@
 				DBA4F77215ABDC7100B8857A /* LocationPin.m in Sources */,
 				DBA4F78315ABDCDE00B8857A /* MTMapController.m in Sources */,
 				DBA4F78415ABDCDE00B8857A /* ImageGridView.m in Sources */,
+				DBA4F79115ABFFD100B8857A /* MTTopController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
