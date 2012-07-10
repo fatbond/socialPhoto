@@ -73,6 +73,7 @@
 		4A692D8D15ABCE7D0035F566 /* MeshtilesPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8715ABCE7D0035F566 /* MeshtilesPhoto.m */; };
 		4A692D8E15ABCE7D0035F566 /* MeshtilesPhotoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8915ABCE7D0035F566 /* MeshtilesPhotoDetail.m */; };
 		4A692D8F15ABCE7D0035F566 /* MeshtilesUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8B15ABCE7D0035F566 /* MeshtilesUser.m */; };
+		DBA4066415ABD6A600ED2B67 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +203,8 @@
 		4A692D8915ABCE7D0035F566 /* MeshtilesPhotoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesPhotoDetail.m; sourceTree = "<group>"; };
 		4A692D8A15ABCE7D0035F566 /* MeshtilesUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshtilesUser.h; sourceTree = "<group>"; };
 		4A692D8B15ABCE7D0035F566 /* MeshtilesUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesUser.m; sourceTree = "<group>"; };
+		DBA4066215ABD6A600ED2B67 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +298,8 @@
 		251D6B4B15A55498006F5447 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DBA4066215ABD6A600ED2B67 /* CustomTabBarController.h */,
+				DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */,
 				251D6B4C15A55498006F5447 /* Login */,
 				251D6B4D15A55498006F5447 /* Top */,
 			);
@@ -649,6 +654,7 @@
 				4A692D8D15ABCE7D0035F566 /* MeshtilesPhoto.m in Sources */,
 				4A692D8E15ABCE7D0035F566 /* MeshtilesPhotoDetail.m in Sources */,
 				4A692D8F15ABCE7D0035F566 /* MeshtilesUser.m in Sources */,
+				DBA4066415ABD6A600ED2B67 /* CustomTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
