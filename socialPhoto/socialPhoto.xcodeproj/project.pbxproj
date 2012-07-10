@@ -16,7 +16,6 @@
 		251D6B5D15A554D6006F5447 /* MTGridController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5C15A554D6006F5447 /* MTGridController.m */; };
 		251D6B6015A554E7006F5447 /* MTSearchTagController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B5F15A554E7006F5447 /* MTSearchTagController.m */; };
 		251D6B6315A554FE006F5447 /* MTSignUpController.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6215A554FE006F5447 /* MTSignUpController.m */; };
-		251D6B6615A55515006F5447 /* PhotoEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6515A55515006F5447 /* PhotoEntity.m */; };
 		251D6BBE15A55568006F5447 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6A15A55568006F5447 /* ASIAuthenticationDialog.m */; };
 		251D6BBF15A55568006F5447 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6D15A55568006F5447 /* ASIDataCompressor.m */; };
 		251D6BC015A55568006F5447 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 251D6B6F15A55568006F5447 /* ASIDataDecompressor.m */; };
@@ -70,6 +69,11 @@
 		25A18FF015A29A400078B870 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A18FEF15A29A400078B870 /* UIKit.framework */; };
 		25A18FF215A29A400078B870 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A18FF115A29A400078B870 /* Foundation.framework */; };
 		25A18FF415A29A400078B870 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A18FF315A29A400078B870 /* CoreGraphics.framework */; };
+		4A692D8C15ABCE7D0035F566 /* MeshtilesFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8515ABCE7D0035F566 /* MeshtilesFetcher.m */; };
+		4A692D8D15ABCE7D0035F566 /* MeshtilesPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8715ABCE7D0035F566 /* MeshtilesPhoto.m */; };
+		4A692D8E15ABCE7D0035F566 /* MeshtilesPhotoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8915ABCE7D0035F566 /* MeshtilesPhotoDetail.m */; };
+		4A692D8F15ABCE7D0035F566 /* MeshtilesUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A692D8B15ABCE7D0035F566 /* MeshtilesUser.m */; };
+		DBA4066415ABD6A600ED2B67 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,8 +96,6 @@
 		251D6B5F15A554E7006F5447 /* MTSearchTagController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchTagController.m; sourceTree = "<group>"; };
 		251D6B6115A554FE006F5447 /* MTSignUpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSignUpController.h; sourceTree = "<group>"; };
 		251D6B6215A554FE006F5447 /* MTSignUpController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSignUpController.m; sourceTree = "<group>"; };
-		251D6B6415A55515006F5447 /* PhotoEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoEntity.h; sourceTree = "<group>"; };
-		251D6B6515A55515006F5447 /* PhotoEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoEntity.m; sourceTree = "<group>"; };
 		251D6B6915A55568006F5447 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		251D6B6A15A55568006F5447 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		251D6B6B15A55568006F5447 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -193,6 +195,16 @@
 		25A18FEF15A29A400078B870 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		25A18FF115A29A400078B870 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		25A18FF315A29A400078B870 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4A692D8415ABCE7D0035F566 /* MeshtilesFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshtilesFetcher.h; sourceTree = "<group>"; };
+		4A692D8515ABCE7D0035F566 /* MeshtilesFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesFetcher.m; sourceTree = "<group>"; };
+		4A692D8615ABCE7D0035F566 /* MeshtilesPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshtilesPhoto.h; sourceTree = "<group>"; };
+		4A692D8715ABCE7D0035F566 /* MeshtilesPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesPhoto.m; sourceTree = "<group>"; };
+		4A692D8815ABCE7D0035F566 /* MeshtilesPhotoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshtilesPhotoDetail.h; sourceTree = "<group>"; };
+		4A692D8915ABCE7D0035F566 /* MeshtilesPhotoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesPhotoDetail.m; sourceTree = "<group>"; };
+		4A692D8A15ABCE7D0035F566 /* MeshtilesUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshtilesUser.h; sourceTree = "<group>"; };
+		4A692D8B15ABCE7D0035F566 /* MeshtilesUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeshtilesUser.m; sourceTree = "<group>"; };
+		DBA4066215ABD6A600ED2B67 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
+		DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +298,8 @@
 		251D6B4B15A55498006F5447 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DBA4066215ABD6A600ED2B67 /* CustomTabBarController.h */,
+				DBA4066315ABD6A600ED2B67 /* CustomTabBarController.m */,
 				251D6B4C15A55498006F5447 /* Login */,
 				251D6B4D15A55498006F5447 /* Top */,
 			);
@@ -321,8 +335,14 @@
 		251D6B4E15A55498006F5447 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				251D6B6415A55515006F5447 /* PhotoEntity.h */,
-				251D6B6515A55515006F5447 /* PhotoEntity.m */,
+				4A692D8415ABCE7D0035F566 /* MeshtilesFetcher.h */,
+				4A692D8515ABCE7D0035F566 /* MeshtilesFetcher.m */,
+				4A692D8615ABCE7D0035F566 /* MeshtilesPhoto.h */,
+				4A692D8715ABCE7D0035F566 /* MeshtilesPhoto.m */,
+				4A692D8815ABCE7D0035F566 /* MeshtilesPhotoDetail.h */,
+				4A692D8915ABCE7D0035F566 /* MeshtilesPhotoDetail.m */,
+				4A692D8A15ABCE7D0035F566 /* MeshtilesUser.h */,
+				4A692D8B15ABCE7D0035F566 /* MeshtilesUser.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -591,7 +611,6 @@
 				251D6B5D15A554D6006F5447 /* MTGridController.m in Sources */,
 				251D6B6015A554E7006F5447 /* MTSearchTagController.m in Sources */,
 				251D6B6315A554FE006F5447 /* MTSignUpController.m in Sources */,
-				251D6B6615A55515006F5447 /* PhotoEntity.m in Sources */,
 				251D6BBE15A55568006F5447 /* ASIAuthenticationDialog.m in Sources */,
 				251D6BBF15A55568006F5447 /* ASIDataCompressor.m in Sources */,
 				251D6BC015A55568006F5447 /* ASIDataDecompressor.m in Sources */,
@@ -631,6 +650,11 @@
 				251D6BE715A55581006F5447 /* MTUtility.m in Sources */,
 				251D6BEA15A55596006F5447 /* MTLocalizableKey.m in Sources */,
 				251D6BED15A555A3006F5447 /* MTImagePathList.m in Sources */,
+				4A692D8C15ABCE7D0035F566 /* MeshtilesFetcher.m in Sources */,
+				4A692D8D15ABCE7D0035F566 /* MeshtilesPhoto.m in Sources */,
+				4A692D8E15ABCE7D0035F566 /* MeshtilesPhotoDetail.m in Sources */,
+				4A692D8F15ABCE7D0035F566 /* MeshtilesUser.m in Sources */,
+				DBA4066415ABD6A600ED2B67 /* CustomTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +692,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -686,7 +710,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
