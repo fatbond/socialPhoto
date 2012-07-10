@@ -8,6 +8,8 @@
 
 #import "MTAppDelegate.h"
 
+#import "MTMeshViewController.h"
+
 @implementation MTAppDelegate
 
 @synthesize window = _window;
@@ -20,7 +22,7 @@
     self.tab = [[CustomTabBarController alloc] init];
     [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
     
-    MTTopController *vc1 = [[MTTopController alloc] init];
+  MTMeshViewController *vc1 = [[MTMeshViewController alloc] init];
     MTMapController *vc2 = [[MTMapController alloc] init];
     MTPhotoView *vc3 = [[MTPhotoView alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];

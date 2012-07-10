@@ -28,7 +28,10 @@
 @optional
 - (void)didFailedLoadingImageAtIndex:(NSUInteger)index;
 
+
 @end
+
+
 
 
 @protocol MTImageGridViewDatasource

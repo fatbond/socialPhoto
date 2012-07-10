@@ -9,7 +9,7 @@
 #import "MTImageGridView.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import <SDWebImage/UIButton+WebCache.h>
+#import "SDWebImage/UIButton+WebCache.h"
 
 #define CELL_RATIO    18.75
 
@@ -21,7 +21,6 @@
 
 - (NSInteger)indexOfImageAtIndexPath:(NSIndexPath *)indexPath andHorizontalIndex:(NSInteger)horizontalIndex;
 - (void)loadImageButtonOfCell:(UITableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath atHorizontalIndex:(NSInteger)horizontalIndex;
-- (UIButton *)imageButtonForCellAtIndexPath:(NSIndexPath *)indexPath atHorizontalIndex:(NSInteger)horizontalIndex;
 
 @end
 
@@ -149,7 +148,7 @@
     // Load it
     [imageButton setImageWithURL:[self.gridDataSource imageURLAtIndex:[self indexOfImageAtIndexPath:indexPath andHorizontalIndex:horizontalIndex]]
                 placeholderImage:nil 
-                         success:^(UIImage *image){
+                         success:^(UIImage *image, BOOL fromCache){
                            // Do fade & clear border animation  
                            imageButton.imageView.alpha = 0.0f;
                            [UIView animateWithDuration:1.0f 

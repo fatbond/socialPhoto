@@ -40,17 +40,17 @@
 }
 
 #if NS_BLOCKS_AVAILABLE
-- (void)setImageWithURL:(NSURL *)url success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setImageWithURL:(NSURL *)url success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     [self setImageWithURL:url placeholderImage:nil success:success failure:failure];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     [self setImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
@@ -97,17 +97,17 @@
 }
 
 #if NS_BLOCKS_AVAILABLE
-- (void)setBackgroundImageWithURL:(NSURL *)url success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setBackgroundImageWithURL:(NSURL *)url success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     [self setBackgroundImageWithURL:url placeholderImage:nil success:success failure:failure];
 }
 
-- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     [self setBackgroundImageWithURL:url placeholderImage:placeholder options:0 success:success failure:failure];
 }
 
-- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)setBackgroundImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 

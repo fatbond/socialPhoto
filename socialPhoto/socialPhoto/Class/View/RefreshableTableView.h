@@ -17,11 +17,12 @@
 @property (nonatomic, assign) BOOL isLoadingNextPage;
 @property (nonatomic, assign) BOOL haveNextPage;
 @property (nonatomic, assign) BOOL canRefresh;
-@property (nonatomic, unsafe_unretained) id <RefreshableTableViewDelegate> refreshDelegate;
+@property (nonatomic, assign) id <RefreshableTableViewDelegate> refreshDelegate;
+@property (nonatomic, assign) id <UITableViewDelegate> tableViewDelegate;
 
 @end
 
-@protocol RefreshableTableViewDelegate <UITableViewDelegate>
+@protocol RefreshableTableViewDelegate
 
 - (BOOL)refreshableTableViewWillRefreshData:(RefreshableTableView *)tableView;        // must set isRefreshing back to NO when finished
 - (BOOL)refreshableTableViewWillLoadNextPage:(RefreshableTableView *)tableView;       // must set isLoadingNextPage back to NO when finished   

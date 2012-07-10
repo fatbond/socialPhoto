@@ -27,6 +27,7 @@
 @synthesize haveNextPage      = _haveNextPage;
 @synthesize refreshDelegate   = _refreshDelegate;
 @synthesize canRefresh        = _canRefresh;
+@synthesize tableViewDelegate = _tableViewDelegate;
 
 #pragma mark - Setters/getters
 
@@ -169,13 +170,13 @@
 #pragma mark - UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  if ([self.refreshDelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-    [self.refreshDelegate tableView:tableView didSelectRowAtIndexPath:indexPath];
+  if ([self.tableViewDelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+    [self.tableViewDelegate tableView:tableView didSelectRowAtIndexPath:indexPath];
   }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  return [self.refreshDelegate tableView:tableView heightForRowAtIndexPath:indexPath];
+  return [self.tableViewDelegate tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 

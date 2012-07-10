@@ -67,6 +67,8 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
 @property (strong) CacheKeyFilter cacheKeyFilter;
 #endif
 
+@property (strong, readonly) NSNumber *progress;
+
 
 /**
  * Returns global SDWebImageManager instance.
@@ -125,7 +127,7 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
  * @param failure A block called when couldn't be retrived for some reason
  * @see [SDWebImageManager downloadWithURL:delegate:options:]
  */
-- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 
 /**
  * Downloads the image at the given URL if not present in cache or return the cached version otherwise.
@@ -138,7 +140,7 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
  * @param failure A block called when couldn't be retrived for some reason
  * @see [SDWebImageManager downloadWithURL:delegate:options:]
  */
-- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options userInfo:(NSDictionary *)info success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure;
+- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options userInfo:(NSDictionary *)info success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure;
 #endif
 
 /**

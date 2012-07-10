@@ -12,7 +12,7 @@
 #import <objc/message.h>
 
 #if NS_BLOCKS_AVAILABLE
-typedef void(^SuccessBlock)(UIImage *image);
+typedef void(^SuccessBlock)(UIImage *image, BOOL fromCache);
 typedef void(^FailureBlock)(NSError *error);
 #endif
 
@@ -23,6 +23,7 @@ static SDWebImageManager *instance;
 #if NS_BLOCKS_AVAILABLE
 @synthesize cacheKeyFilter;
 #endif
+@synthesize progress = _progress;
 
 - (id)init
 {
@@ -142,12 +143,12 @@ static SDWebImageManager *instance;
 }
 
 #if NS_BLOCKS_AVAILABLE
-- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure
+- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure
 {
     [self downloadWithURL:url delegate:delegate options:options userInfo:nil success:success failure:failure];
 }
 
-- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options userInfo:(NSDictionary *)userInfo success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure
+- (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options userInfo:(NSDictionary *)userInfo success:(void (^)(UIImage *image, BOOL fromCache))success failure:(void (^)(NSError *error))failure
 {
     // repeated logic from above due to requirement for backwards compatability for iOS versions without blocks
     
@@ -259,7 +260,7 @@ static SDWebImageManager *instance;
     if ([info objectForKey:@"success"])
     {
         SuccessBlock success = [info objectForKey:@"success"];
-        success(image);
+        success(image, YES);
     }
 #endif
 
@@ -312,6 +313,8 @@ static SDWebImageManager *instance;
 
 - (void)imageDownloader:(SDWebImageDownloader *)downloader didUpdatePartialImage:(UIImage *)image
 {
+    _progress = downloader.progress;
+    
     // Notify all the downloadDelegates with this downloader
     for (NSInteger idx = (NSInteger)[downloaders count] - 1; idx >= 0; idx--)
     {
@@ -379,7 +382,7 @@ static SDWebImageManager *instance;
                 if ([[downloadInfo objectAtIndex:uidx] objectForKey:@"success"])
                 {
                     SuccessBlock success = [[downloadInfo objectAtIndex:uidx] objectForKey:@"success"];
-                    success(image);
+                    success(image, NO);
                 }
 #endif
             }
