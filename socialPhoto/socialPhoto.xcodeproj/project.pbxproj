@@ -42,6 +42,9 @@
 		4AC7C7EF15AC7213008F696C /* MTSegmentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7C7EA15AC7213008F696C /* MTSegmentsController.m */; };
 		4AC7C7F015AC7213008F696C /* MTTopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC7C7EC15AC7213008F696C /* MTTopController.m */; };
 		4AC7C7F215AC72E2008F696C /* MTPhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC7C7F115AC72E2008F696C /* MTPhotoView.xib */; };
+		AC3DF25E15AD3BD300D2068E /* MTUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3DF25C15AD3BD100D2068E /* MTUserController.m */; };
+		AC3DF25F15AD3BD300D2068E /* MTUserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3DF25D15AD3BD100D2068E /* MTUserController.xib */; };
+		AC3DF26115AD3E1300D2068E /* MTLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC3DF26015AD3E1200D2068E /* MTLoginController.xib */; };
 		DBA4F7BA15AC0CD700B8857A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA4F7B915AC0CD600B8857A /* QuartzCore.framework */; };
 		DBF8116F15AC305C00E41659 /* CustomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF810B915AC305C00E41659 /* CustomTabBarController.m */; };
 		DBF8117015AC305C00E41659 /* MTLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF810BC15AC305C00E41659 /* MTLoginController.m */; };
@@ -198,6 +201,10 @@
 		4AC7C7EB15AC7213008F696C /* MTTopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTopController.h; sourceTree = "<group>"; };
 		4AC7C7EC15AC7213008F696C /* MTTopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTopController.m; sourceTree = "<group>"; };
 		4AC7C7F115AC72E2008F696C /* MTPhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTPhotoView.xib; sourceTree = "<group>"; };
+		AC3DF25B15AD3BD000D2068E /* MTUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTUserController.h; sourceTree = "<group>"; };
+		AC3DF25C15AD3BD100D2068E /* MTUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserController.m; sourceTree = "<group>"; };
+		AC3DF25D15AD3BD100D2068E /* MTUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTUserController.xib; sourceTree = "<group>"; };
+		AC3DF26015AD3E1200D2068E /* MTLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLoginController.xib; sourceTree = "<group>"; };
 		DBA4F7B915AC0CD600B8857A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DBF810B815AC305C00E41659 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		DBF810B915AC305C00E41659 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
@@ -430,6 +437,10 @@
 			children = (
 				DBF810BB15AC305C00E41659 /* MTLoginController.h */,
 				DBF810BC15AC305C00E41659 /* MTLoginController.m */,
+				AC3DF26015AD3E1200D2068E /* MTLoginController.xib */,
+				AC3DF25B15AD3BD000D2068E /* MTUserController.h */,
+				AC3DF25C15AD3BD100D2068E /* MTUserController.m */,
+				AC3DF25D15AD3BD100D2068E /* MTUserController.xib */,
 				DBF810BD15AC305C00E41659 /* MTSignUpController.h */,
 				DBF810BE15AC305C00E41659 /* MTSignUpController.m */,
 			);
@@ -849,6 +860,8 @@
 				DBF811C515AC305C00E41659 /* Localizable.strings in Resources */,
 				DBF811C615AC305C00E41659 /* MTMapController.xib in Resources */,
 				4AC7C7F215AC72E2008F696C /* MTPhotoView.xib in Resources */,
+				AC3DF25F15AD3BD300D2068E /* MTUserController.xib in Resources */,
+				AC3DF26115AD3E1300D2068E /* MTLoginController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -915,6 +928,7 @@
 				4AC7C7EE15AC7213008F696C /* MTListViewController.m in Sources */,
 				4AC7C7EF15AC7213008F696C /* MTSegmentsController.m in Sources */,
 				4AC7C7F015AC7213008F696C /* MTTopController.m in Sources */,
+				AC3DF25E15AD3BD300D2068E /* MTUserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
