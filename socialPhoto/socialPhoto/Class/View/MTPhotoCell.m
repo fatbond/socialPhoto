@@ -76,6 +76,7 @@
     _captionLabel.font = [UIFont systemFontOfSize:13.0];
     _captionLabel.numberOfLines = 0;
     _captionLabel.lineBreakMode = UILineBreakModeWordWrap;
+    _captionLabel.backgroundColor = [UIColor clearColor];
   }
   
   return _captionLabel;
@@ -97,6 +98,7 @@
                                                 blue:128.0/255.0
                                                alpha:1.0];
     _timePostLabel.font = [UIFont systemFontOfSize:13.0];
+    _timePostLabel.backgroundColor = [UIColor clearColor];
   }
   
   return _timePostLabel;

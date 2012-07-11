@@ -54,6 +54,10 @@
     _imageGridView.gridDataSource = self;
     _imageGridView.numberOfImagesPerRow = 4;
     _imageGridView.canRefresh = YES;
+    _imageGridView.backgroundColor = [UIColor colorWithRed:237.0/255.0
+                                                     green:234.0/255.0
+                                                      blue:229.0/255.0
+                                                     alpha:1.0];
   }
   
   return _imageGridView;

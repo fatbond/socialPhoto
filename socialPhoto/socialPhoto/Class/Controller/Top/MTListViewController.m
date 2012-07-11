@@ -55,6 +55,10 @@
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     _tableView.tableViewDelegate = self;
     _tableView.canRefresh = YES;
+    _tableView.backgroundColor = [UIColor colorWithRed:237.0/255.0
+                                                green:234.0/255.0
+                                                 blue:229.0/255.0
+                                                alpha:1.0];
   }
   
   return _tableView;

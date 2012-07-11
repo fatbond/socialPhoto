@@ -177,6 +177,7 @@ return _mapViewController;
 - (void)imageTappedAtIndex:(NSUInteger)index {
   [self.listViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
   self.segmentedControl.selectedSegmentIndex = 1;
+  [self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 
