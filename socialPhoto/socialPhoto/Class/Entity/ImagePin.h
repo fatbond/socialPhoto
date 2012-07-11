@@ -10,14 +10,12 @@
 #import <MapKit/MapKit.h>
 
 @interface ImagePin : NSObject<MKAnnotation>{
-    NSURL   *url;
-    
-    CLLocationCoordinate2D coordinate;
+    CLLocationCoordinate2D coor;
 }
 
 - (NSURL *) getURL;
 - (CLLocationCoordinate2D) getCoordinate;
 - (id)initWithCoordinate:(CLLocationCoordinate2D) c
-     andURL:(NSURL*) imageURL;
+      andURL:(NSURL*) imageURL;
 
 @end

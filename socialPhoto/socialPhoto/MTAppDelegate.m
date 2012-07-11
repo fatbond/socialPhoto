@@ -42,9 +42,21 @@
     
     [self.window addSubview:[self.tab view]];
     
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *) error {
+    NSLog(@"Do not have device token");
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)_deviceToken{
+    
+    [MTLoginController setDeviceToken:[[_deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

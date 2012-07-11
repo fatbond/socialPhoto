@@ -35,6 +35,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [MTLoginController setUserID:@""];
+    [MTLoginController setDeviceToken:@""];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

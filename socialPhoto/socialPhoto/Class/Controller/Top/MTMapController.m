@@ -12,6 +12,7 @@
 @private
     SBJsonParser *parser;    
     LocationPin *addAnnotation;
+    NSMutableArray *listImagePin;
     NSMutableArray *listImageToShow;
     MTImageGridView *imageGridView;
     MTFetcher *fetcher;
@@ -22,12 +23,15 @@
 @synthesize search = _search;
 @synthesize myMap = _myMap;
 @synthesize locationManager = _locationManager;
-@synthesize photos = _photos;
+//@synthesize photos = _photos;
 
 -(void) setPhotos:(NSArray *)photos
 {
-    _photos = photos;
-    [self meshtilesFetcher:fetcher didFinishedGetListUserPhoto:_photos];
+    for(ImagePin *pin in listImagePin)
+        [self.myMap removeAnnotation:pin];
+    [listImagePin removeAllObjects];
+    //self.photos = photos;
+    [self meshtilesFetcher:fetcher didFinishedGetListUserPhoto:photos];
 }
 
 - (CLLocationCoordinate2D) addressLocation {
@@ -89,6 +93,7 @@
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
     ImagePin *annView = [[ImagePin alloc] initWithCoordinate:location 
                                           andURL:url];
+    [listImagePin addObject:annView];
     [self.myMap addAnnotation:annView]; 
 }
 
@@ -122,7 +127,7 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
 {
     static NSString *AnnotationViewID = @"annotationViewID";
-    static NSString *ImagePinID = @"imagePinID";
+    //static NSString *ImagePinID = @"imagePinID";
      
     // Create pin for found location
     if([annotation isKindOfClass:[LocationPin class]]){
@@ -136,16 +141,17 @@
     
     // Create pin for an image
     if([annotation isKindOfClass:[ImagePin class]]){
-        MKAnnotationView *annView = [mapView dequeueReusableAnnotationViewWithIdentifier:ImagePinID];
-        if (annView == nil)
-            annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ImagePinID];
+//        MKAnnotationView *annView = [mapView dequeueReusableAnnotationViewWithIdentifier:ImagePinID];
+//        if (annView == nil)
+//            annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ImagePinID];
+        MKAnnotationView *annView = [[MKAnnotationView alloc] initWithFrame:CGRectMake(0, -23, 48, 38)];
         
         UIImageView *bgView = [[UIImageView alloc] init];
         [bgView setImage:[UIImage imageNamed:@"map_image_bg.png"]];
         bgView.frame = CGRectMake(0, -28, 56, 56);
         
         UIImageView *myView = [[UIImageView alloc] init];
-        [myView setImageWithURL:[(ImagePin*)annotation getURL] placeholderImage:[UIImage imageNamed:@"map_image_bg.png"]];
+        [myView setImageWithURL:[(ImagePin*)annotation getURL] placeholderImage:[UIImage imageNamed:@"map_image_bg.png"] options:SDWebImageProgressiveDownload];
         myView.frame = CGRectMake(7, -23, 38, 38);
         
         annView.frame = CGRectMake(0, -23, 48, 38);
@@ -173,13 +179,14 @@
                 MKAnnotationView *annView = [self mapView:self.myMap viewForAnnotation:ann];
                 CGPoint touchPoint = [self.myMap convertCoordinate:[view.annotation coordinate] toPointToView:self.myMap];
                 
-                CGRect buffer = ((UIImageView*)[annView.subviews objectAtIndex:0]).frame;
+                CGRect buffer = annView.frame;
                 CGPoint point = [self.myMap convertCoordinate:[ann getCoordinate] toPointToView:self.myMap];
                 CGRect rect = CGRectMake(point.x-buffer.size.width/2, point.y-buffer.size.height/2, buffer.size.width, buffer.size.height);
                 
                 if(CGRectContainsPoint(rect, touchPoint)) {
-                    [listImageToShow addObject:annView];
-                    NSLog(@"Tap");
+                    NSLog(@"%@", [((ImagePin*)(ann)) getURL]);
+                    [listImageToShow addObject:ann];
+                    //NSLog(@"Tap");
                 }
             }
         
@@ -192,6 +199,7 @@
         }
         else
         {
+            [imageGridView reloadData];
             [self.view addSubview:imageGridView];
             NSLog(@"Grid View");
         }
@@ -205,7 +213,6 @@
         view.bounds = CGRectMake(0, 0, 38, 38);
         ((UIImageView*)[view.subviews objectAtIndex:0]).frame = CGRectMake(0, -28, 56, 56);
         ((UIImageView*)[view.subviews objectAtIndex:1]).frame = CGRectMake(7, -23, 38, 38);
-        [imageGridView removeFromSuperview];
     }
 }
 
@@ -226,7 +233,7 @@
 }
 
 -(NSURL*) imageURLAtIndex:(NSUInteger)index{
-    return [((ImagePin*)((MKAnnotationView*)[listImageToShow objectAtIndex:index]).annotation) getURL];
+    return [((ImagePin*)[listImageToShow objectAtIndex:index]) getURL];
 }
 
 -(void) imageTappedAtIndex:(NSUInteger)index{
@@ -248,7 +255,7 @@
         
     imageGridView = [[MTImageGridView alloc] init];
     imageGridView.frame = CGRectMake(50, 50, 200, 200);
-    imageGridView.numberOfImagesPerRow = 4;
+    imageGridView.numberOfImagesPerRow = 3;
     imageGridView.gridDelegate = self;
     imageGridView.gridDataSource = self;
     imageGridView.canRefresh = FALSE;
@@ -258,10 +265,11 @@
     fetcher = [[MTFetcher alloc] init];
     [fetcher setDelegate:self];
     
+    listImagePin = [[NSMutableArray alloc] init];
     listImageToShow = [[NSMutableArray alloc] init];
     
     // JUST FOR TEST
-    [self fetchedData:@"cat" withUserID:@"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4"];
+    // [self fetchedData:@"cat" withUserID:@"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4"];
 }
 
 - (void)viewDidUnload
