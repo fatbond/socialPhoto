@@ -45,13 +45,12 @@ static NSString* deviceToken;
 
 - (void) grabURLInBackground:(NSString *) username andPassword:(NSString *) password
 {
-    //NSString *deviceToken = [UIDevice currentDevice].uniqueIdentifier;    
     NSURL *url = [NSURL URLWithString:@"http://107.20.246.0/api/Login/login"];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     [request setDelegate:self];
     [request setPostValue:username forKey:@"user_name"];
     [request setPostValue:[password MD5] forKey:@"password"];
-    [request setPostValue:@"" forKey:@"device_token"];
+    [request setPostValue:[MTLoginController getDeviceToken] forKey:@"device_token"];
     [request startAsynchronous];
 }
 

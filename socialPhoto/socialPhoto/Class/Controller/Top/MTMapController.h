@@ -24,6 +24,6 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (nonatomic, strong) NSArray *photos;
+-(void) setPhotos:(NSArray *)photos;
 
 @end

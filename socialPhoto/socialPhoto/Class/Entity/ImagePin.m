@@ -8,21 +8,27 @@
 
 #import "ImagePin.h"
 
+@interface ImagePin()
+   @property (strong) NSURL *url;
+@end
+
 @implementation ImagePin
 @synthesize coordinate;
+@synthesize url = _url;
 
 -(NSURL*) getURL
 {
-    return url;
+    // NSLog(@"pin : %@", self.url);
+    return self.url;
 }
 
 -(id)initWithCoordinate:(CLLocationCoordinate2D) c
                  andURL:(NSURL*) imageURL{
     coordinate = c;
-    url = imageURL;
+    self.url = imageURL;
     return self;
 }
 
-- (CLLocationCoordinate2D) getCoordinate{return self.coordinate;}
+- (CLLocationCoordinate2D) getCoordinate{return coordinate;}
 
 @end
