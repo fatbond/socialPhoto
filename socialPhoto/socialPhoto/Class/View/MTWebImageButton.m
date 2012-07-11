@@ -18,6 +18,8 @@
 @property (strong, nonatomic) UIButton      *imageButton;
 
 - (void)imageButtonTapped:(UIButton *)button;
+- (void)showAndResetProgressHUD;
+- (void)setImage:(UIImage *)image forButton:(UIButton *)button;
 
 @end
 

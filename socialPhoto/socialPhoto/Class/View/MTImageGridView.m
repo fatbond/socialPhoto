@@ -21,6 +21,7 @@
 
 - (NSInteger)indexOfImageAtIndexPath:(NSIndexPath *)indexPath andHorizontalIndex:(NSInteger)horizontalIndex;
 - (void)loadImageButtonOfCell:(UITableViewCell *)cell AtIndexPath:(NSIndexPath *)indexPath atHorizontalIndex:(NSInteger)horizontalIndex;
+- (UIButton *)imageButtonForCellAtIndexPath:(NSIndexPath *)indexPath atHorizontalIndex:(NSInteger)horizontalIndex;
 
 @end
 
