@@ -136,12 +136,12 @@ return _mapViewController;
 - (UISegmentedControl *)segmentedControl {
   if (!_segmentedControl) {
     
-    NSMutableArray *titles = [[NSMutableArray alloc] init];
-    for (UIViewController *viewController in self.segmentViewControllers) {
-      [titles addObject:viewController.title];
-    }
-    
-    _segmentedControl = [[UISegmentedControl alloc] initWithItems:titles];
+    _segmentedControl = [[UISegmentedControl alloc] initWithItems:nil];
+    [_segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"header_tile_view.png"] atIndex:0 animated:NO];
+    [_segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"header_list_view.png"] atIndex:1 animated:NO];
+    [_segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"header_map_view.png"] atIndex:2 animated:NO];
+    _segmentedControl.frame = CGRectMake(0, 0, 216.0, 26.0);
+
     _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     
     [_segmentedControl addTarget:self.segmentsController
