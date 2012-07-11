@@ -59,6 +59,9 @@
                                                 green:234.0/255.0
                                                  blue:229.0/255.0
                                                 alpha:1.0];
+    _tableView.refreshHeaderView.layer.shadowOpacity = 0.5;
+    _tableView.refreshHeaderView.layer.shadowOffset = CGSizeMake(0.0, 3.0);
+    
   }
   
   return _tableView;

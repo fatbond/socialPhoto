@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EGORefreshTableFooterView.h"
+#import "EGORefreshTableHeaderView.h"
+
 
 @protocol MTRefreshableTableViewDelegate;
 
@@ -19,6 +22,9 @@
 @property (nonatomic, assign) BOOL canRefresh;
 @property (nonatomic, assign) id <MTRefreshableTableViewDelegate> refreshDelegate;
 @property (nonatomic, assign) id <UITableViewDelegate> tableViewDelegate;
+
+@property (strong, nonatomic) EGORefreshTableFooterView *refreshFooterView;
+@property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 @end
 

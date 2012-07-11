@@ -283,8 +283,15 @@ return _mapViewController;
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
+    
+    // Using predefined data for now
     self.userId = MeshtilesUserId;
     self.photoTag = @"Cat";
+    
+    // Setting the navigation bar color
+    self.navigationBar.barStyle = UIBarStyleBlack;
+    
+    
     [self refreshData];
   }
   return self;

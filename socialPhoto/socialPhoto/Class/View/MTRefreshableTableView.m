@@ -8,13 +8,8 @@
 
 #import "MTRefreshableTableView.h"
 
-#import "EGORefreshTableFooterView.h"
-#import "EGORefreshTableHeaderView.h"
-
 @interface MTRefreshableTableView() <EGORefreshTableFooterDelegate, EGORefreshTableHeaderDelegate, UIScrollViewDelegate>
 
-@property (strong, nonatomic) EGORefreshTableFooterView *refreshFooterView;
-@property (strong, nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 @end
 
