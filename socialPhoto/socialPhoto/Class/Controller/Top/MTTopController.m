@@ -203,6 +203,13 @@ return _mapViewController;
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
 #warning Implement switching to searchViewController here
+  
+  UIViewController *aVC = [[UIViewController alloc] init];
+  aVC.view.backgroundColor = [UIColor greenColor];
+  aVC.title = @"search";
+  
+  [self pushViewController:aVC animated:YES];
+  
 }
 
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl {

@@ -12,5 +12,6 @@
 
 - (void) changeBackgroundImage:(UIImage*)backgroundImage;
 - (void) addTabItemWithImage:(NSString*) normalImageName
-         andSelectedImage:(NSString*) selectedImageName;
+            andSelectedImage:(NSString*) selectedImageName
+                  andTabName:(NSString *)tabName;
 @end

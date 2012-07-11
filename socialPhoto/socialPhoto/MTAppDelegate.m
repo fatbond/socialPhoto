@@ -29,11 +29,21 @@
     MTLoginController *login = [[MTLoginController alloc] initWithNibName:@"MTLoginController" bundle:nil];
     UINavigationController *vc5 = [[UINavigationController alloc] initWithRootViewController:login];
     
-    [self.tab addTabItemWithImage:@"tab_mesh.png" andSelectedImage:@"tab_mesh_active.png"];
-    [self.tab addTabItemWithImage:@"tab_trend_tag.png" andSelectedImage:@"tab_trend_tag_active.png"];
-    [self.tab addTabItemWithImage:@"tab_shot.png" andSelectedImage:@"tab_shot_active.png"];
-    [self.tab addTabItemWithImage:@"tab_timeline.png" andSelectedImage:@"tab_timeline_active.png"];
-    [self.tab addTabItemWithImage:@"tab_user.png" andSelectedImage:@"tab_user_active.png"];
+    [self.tab addTabItemWithImage:@"tab_mesh.png" 
+                 andSelectedImage:@"tab_mesh_active.png"
+                       andTabName:@"mesh"];
+    [self.tab addTabItemWithImage:@"tab_trend_tag.png" 
+                 andSelectedImage:@"tab_trend_tag_active.png"
+                       andTabName:@"trend"];
+    [self.tab addTabItemWithImage:@"tab_shot.png" 
+                 andSelectedImage:@"tab_shot_active.png"
+                       andTabName:@"shot"];
+    [self.tab addTabItemWithImage:@"tab_timeline.png" 
+                 andSelectedImage:@"tab_timeline_active.png"
+                       andTabName:@"timeline"];
+    [self.tab addTabItemWithImage:@"tab_user.png" 
+                 andSelectedImage:@"tab_user_active.png"
+                       andTabName:@"user"];
     
     
     NSArray *viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, vc4, vc5, nil];
