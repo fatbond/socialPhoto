@@ -147,16 +147,18 @@
     imageButton.backgroundColor = [UIColor grayColor];
     
     // Load it
+    __unsafe_unretained UIButton *weakImageButton = imageButton;
     [imageButton setImageWithURL:[self.gridDataSource imageURLAtIndex:[self indexOfImageAtIndexPath:indexPath andHorizontalIndex:horizontalIndex]]
                 placeholderImage:nil 
                          success:^(UIImage *image, BOOL fromCache){
+                           __strong UIButton *strongImageButton = weakImageButton;
                            // Do fade & clear border animation  
-                           imageButton.imageView.alpha = 0.0f;
+                           strongImageButton.imageView.alpha = 0.0f;
                            [UIView animateWithDuration:1.0f 
                                                  delay:0.0f 
                                                options:UIViewAnimationOptionAllowUserInteraction 
                                             animations:^{
-                                              imageButton.imageView.alpha=1.0f;
+                                              strongImageButton.imageView.alpha=1.0f;
                                             } 
                                             completion:nil];
                          }
