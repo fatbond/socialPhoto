@@ -12,6 +12,8 @@
 #import "MTListViewController.h"
 #import "MTMapController.h"
 
+#import "MTSearchButton.h"
+
 #import "MTPhoto.h"
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
@@ -27,7 +29,10 @@
 @property (assign, nonatomic) NSUInteger currentPage;
 @property (strong, nonatomic) MTFetcher *meshtilesFetcher;
 
+@property (strong, nonatomic) MTSearchButton *searchButton;
+
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl;
+- (void)searchButtonTapped:(MTSearchButton *)searchButton;
 
 @end
 
@@ -45,6 +50,8 @@
 @synthesize photosDetails = _photosDetails;
 @synthesize currentPage = _currentPage;
 @synthesize meshtilesFetcher = _meshtilesFetcher;
+
+@synthesize searchButton = _searchButton;
 
 @synthesize userId = _userId;
 @synthesize photoTag = _photoTag;
@@ -80,6 +87,15 @@
 }
 
 #pragma mark - Setters/getters
+
+- (MTSearchButton *)searchButton {
+  if (!_searchButton) {
+    _searchButton = [[MTSearchButton alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 103)/2, (48-42)/2, 103.0, 40.0)];
+    [_searchButton addTarget:self action:@selector(searchButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+  }
+  
+  return _searchButton;
+}
 
 - (void)setPhotos:(NSArray *)photos {
   _photos = photos;
@@ -185,11 +201,15 @@ return _mapViewController;
 
 #pragma mark - Target/Action
 
+- (void)searchButtonTapped:(MTSearchButton *)searchButton {
+#warning Implement switching to searchViewController here
+}
+
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl {
   if (segmentedControl == self.segmentedControl) {
     
+    // Display proper image for the segments
     [self resetSegmentedControl];
-    
     switch(segmentedControl.selectedSegmentIndex) {
       case 0:
         [segmentedControl setImage:[UIImage imageNamed:@"header_tile_view_active.png"] forSegmentAtIndex:0];
@@ -202,6 +222,8 @@ return _mapViewController;
         break;
     }
     
+    // Insert the searchButton to proper viewController
+    [((UIViewController *)[self.segmentViewControllers objectAtIndex:segmentedControl.selectedSegmentIndex]).view addSubview:self.searchButton];
   }
 }
 
