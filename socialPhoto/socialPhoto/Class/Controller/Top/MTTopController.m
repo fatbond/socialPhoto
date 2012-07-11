@@ -16,7 +16,7 @@
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
 
-@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate>
+@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate>
 
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
@@ -108,6 +108,7 @@
     _gridViewController = [[MTGridController alloc] init];
     _gridViewController.title = @"Grid";
     _gridViewController.imageGridView.refreshDelegate = self;
+    _gridViewController.imageGridView.gridDelegate = self;
   }
   
   return _gridViewController;
@@ -167,6 +168,19 @@ return _mapViewController;
   
   return _segmentViewControllers;
 }
+
+
+
+
+#pragma mark - MTImageGridViewDelegate methods
+
+- (void)imageTappedAtIndex:(NSUInteger)index {
+  [self.listViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+  self.segmentedControl.selectedSegmentIndex = 1;
+}
+
+
+
 
 
 #pragma mark - Data loading
@@ -279,7 +293,7 @@ return _mapViewController;
 {
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
-  self.segmentedControl.selectedSegmentIndex = 1;
+  self.segmentedControl.selectedSegmentIndex = 0;
   [self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 

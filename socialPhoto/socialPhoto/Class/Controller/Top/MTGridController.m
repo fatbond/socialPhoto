@@ -11,7 +11,7 @@
 #import "MTPhoto.h"
 #import "MTFetcher.h"
 
-@interface MTGridController () <MTFetcherDelegate, MTImageGridViewDatasource, MTImageGridViewDelegate>
+@interface MTGridController () <MTFetcherDelegate, MTImageGridViewDatasource>
 
 
 @end
@@ -51,7 +51,6 @@
   if (!_imageGridView) {
     _imageGridView = [[MTImageGridView alloc] initWithFrame:self.view.bounds];
     _imageGridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _imageGridView.gridDelegate = self;
     _imageGridView.gridDataSource = self;
     _imageGridView.numberOfImagesPerRow = 4;
     _imageGridView.canRefresh = YES;
@@ -60,15 +59,9 @@
   return _imageGridView;
 }
 
-#pragma mark - MTImageGridViewDelegate methods
 
-- (void)imageTappedAtIndex:(NSUInteger)index {
-  NSLog(@"Tapped at index %d", index);
-  //  
-  //  MeshtilesPhotoViewController *photoVC = [[MeshtilesPhotoViewController alloc] init];
-  //  photoVC.photoId = [self photoAtIndex:index].photoId; 
-  //  [self.navigationController pushViewController:photoVC animated:YES];
-}
+
+
 
 #pragma mark - MTImageGridViewDatasource methods
 
