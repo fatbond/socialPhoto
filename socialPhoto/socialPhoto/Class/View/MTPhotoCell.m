@@ -8,6 +8,8 @@
 
 #import "MTPhotoCell.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 
 #define IMAGE_BUTTON_WIDTH_RATIO      300.0/320.0
 #define USER_NAME_BUTTON_WIDTH_RATIO  125.0/320.0
@@ -180,13 +182,20 @@
   
   if (self) {
     // Initialization code
+    
+    // Add subviews
     [self.contentView addSubview:self.imageButton];
     [self.contentView addSubview:self.userImageButton];
     [self.contentView addSubview:self.userNameButton];
     [self.contentView addSubview:self.timePostLabel];
     [self.contentView addSubview:self.captionLabel];
     
+    // Set selectionStyle
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    // Set cell shadow
+    self.layer.shadowOpacity = 0.3;
+    self.layer.shadowOffset = CGSizeMake(0, 1.0);
   }
   return self;
 }

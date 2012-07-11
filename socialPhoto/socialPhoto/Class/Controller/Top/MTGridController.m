@@ -49,7 +49,10 @@
 
 - (MTImageGridView *)imageGridView {
   if (!_imageGridView) {
-    _imageGridView = [[MTImageGridView alloc] initWithFrame:self.view.bounds];
+    CGRect selfBounds = self.view.bounds;
+    selfBounds.origin.y += 48.0;
+    selfBounds.size.height -= 48.0;
+    _imageGridView = [[MTImageGridView alloc] initWithFrame:selfBounds];
     _imageGridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _imageGridView.gridDataSource = self;
     _imageGridView.numberOfImagesPerRow = 4;
@@ -58,8 +61,8 @@
                                                      green:234.0/255.0
                                                       blue:229.0/255.0
                                                      alpha:1.0];    
-    _imageGridView.refreshHeaderView.layer.shadowOpacity = 0.5;
-    _imageGridView.refreshHeaderView.layer.shadowOffset = CGSizeMake(0.0, 3.0);
+    _imageGridView.refreshHeaderView.layer.shadowOpacity = 0.3;
+    _imageGridView.refreshHeaderView.layer.shadowOffset = CGSizeMake(0.0, 1.0);
   }
   
   return _imageGridView;
@@ -94,6 +97,10 @@
     // Custom initialization
     
     [self.view addSubview:self.imageGridView];
+    self.view.backgroundColor = [UIColor colorWithRed:136.0/255.0 
+                                                green:136.0/255.0 
+                                                 blue:136.0/255.0 
+                                                alpha:1.0];
   }
   return self;
 }

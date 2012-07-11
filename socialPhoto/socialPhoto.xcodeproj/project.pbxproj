@@ -62,6 +62,7 @@
 		4A90925015AD6942006DF8EF /* time_newest_post_bullet_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A90924C15AD6941006DF8EF /* time_newest_post_bullet_bg@2x.png */; };
 		4A90925115AD6942006DF8EF /* title_search_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A90924D15AD6941006DF8EF /* title_search_bg.png */; };
 		4A90925215AD6942006DF8EF /* title_search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A90924E15AD6942006DF8EF /* title_search_bg@2x.png */; };
+		4A90925515AD75E1006DF8EF /* MTSearchButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A90925415AD75E1006DF8EF /* MTSearchButton.m */; };
 		4AA7E71415AC6834000BA4F2 /* libSDWebImageARC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA7E70F15AC6824000BA4F2 /* libSDWebImageARC.a */; };
 		4AA7E71515AC697A000BA4F2 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E433415AC67A800A9A6ED /* SBJsonTokeniser.m */; };
 		4AA7E71615AC697A000BA4F2 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E433815AC67A800A9A6ED /* SBJsonWriter.m */; };
@@ -251,6 +252,8 @@
 		4A90924C15AD6941006DF8EF /* time_newest_post_bullet_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_newest_post_bullet_bg@2x.png"; sourceTree = "<group>"; };
 		4A90924D15AD6941006DF8EF /* title_search_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_search_bg.png; sourceTree = "<group>"; };
 		4A90924E15AD6942006DF8EF /* title_search_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_search_bg@2x.png"; sourceTree = "<group>"; };
+		4A90925315AD75E1006DF8EF /* MTSearchButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTSearchButton.h; sourceTree = "<group>"; };
+		4A90925415AD75E1006DF8EF /* MTSearchButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTSearchButton.m; sourceTree = "<group>"; };
 		4AA7E70315AC6824000BA4F2 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		4AC7C7C615AC6DED008F696C /* MTWebImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTWebImageButton.h; sourceTree = "<group>"; };
 		4AC7C7C715AC6DED008F696C /* MTWebImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTWebImageButton.m; sourceTree = "<group>"; };
@@ -760,6 +763,8 @@
 				4AC7C7CD15AC6DEE008F696C /* MTImageGridView.m */,
 				DBF8114615AC305C00E41659 /* MTPhotoView.h */,
 				DBF8114715AC305C00E41659 /* MTPhotoView.m */,
+				4A90925315AD75E1006DF8EF /* MTSearchButton.h */,
+				4A90925415AD75E1006DF8EF /* MTSearchButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 				4AC7C7F015AC7213008F696C /* MTTopController.m in Sources */,
 				AC3DF25E15AD3BD300D2068E /* MTUserController.m in Sources */,
 				4A90921E15AD53EE006DF8EF /* NSString+MD5.m in Sources */,
+				4A90925515AD75E1006DF8EF /* MTSearchButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
