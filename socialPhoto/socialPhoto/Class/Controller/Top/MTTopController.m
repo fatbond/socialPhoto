@@ -27,6 +27,8 @@
 @property (assign, nonatomic) NSUInteger currentPage;
 @property (strong, nonatomic) MTFetcher *meshtilesFetcher;
 
+- (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl;
+
 @end
 
 @implementation MTTopController
@@ -48,6 +50,12 @@
 @synthesize photoTag = _photoTag;
 
 #pragma mark - Helper methods
+
+- (void)resetSegmentedControl {
+  [self.segmentedControl setImage:[UIImage imageNamed:@"header_tile_view.png"] forSegmentAtIndex:0];
+  [self.segmentedControl setImage:[UIImage imageNamed:@"header_list_view.png"] forSegmentAtIndex:1];
+  [self.segmentedControl setImage:[UIImage imageNamed:@"header_map_view.png"] forSegmentAtIndex:2];
+}
 
 - (void)displayConnectionErrorAlert {
   UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
@@ -147,6 +155,9 @@ return _mapViewController;
     [_segmentedControl addTarget:self.segmentsController
                           action:@selector(indexDidChangeForSegmentedControl:)
                 forControlEvents:UIControlEventValueChanged];
+    [_segmentedControl addTarget:self 
+                          action:@selector(indexDidChangeForSegmentedControl:) 
+                forControlEvents:UIControlEventValueChanged];
   }
   
   return _segmentedControl;
@@ -167,6 +178,31 @@ return _mapViewController;
   }
   
   return _segmentViewControllers;
+}
+
+
+
+
+#pragma mark - Target/Action
+
+- (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl {
+  if (segmentedControl == self.segmentedControl) {
+    
+    [self resetSegmentedControl];
+    
+    switch(segmentedControl.selectedSegmentIndex) {
+      case 0:
+        [segmentedControl setImage:[UIImage imageNamed:@"header_tile_view_active.png"] forSegmentAtIndex:0];
+        break;
+      case 1:
+        [segmentedControl setImage:[UIImage imageNamed:@"header_list_view_active.png"] forSegmentAtIndex:1];
+        break;
+      case 2:
+        [segmentedControl setImage:[UIImage imageNamed:@"header_map_view_active.png"] forSegmentAtIndex:2];
+        break;
+    }
+    
+  }
 }
 
 
