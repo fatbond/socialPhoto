@@ -22,11 +22,12 @@
     self.tab = [[CustomTabBarController alloc] init];
     [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
     
-  MTTopController *vc1 = [[MTTopController alloc] init];
+    MTTopController *vc1 = [[MTTopController alloc] init];
     MTMapController *vc2 = [[MTMapController alloc] init];
     MTPhotoView *vc3 = [[MTPhotoView alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];
-    UIViewController *vc5 = [[UIViewController alloc] init];
+    MTLoginController *login = [[MTLoginController alloc] initWithNibName:@"MTLoginController" bundle:nil];
+    UINavigationController *vc5 = [[UINavigationController alloc] initWithRootViewController:login];
     
     [self.tab addTabItemWithImage:@"tab_mesh.png" andSelectedImage:@"tab_mesh_active.png"];
     [self.tab addTabItemWithImage:@"tab_trend_tag.png" andSelectedImage:@"tab_trend_tag_active.png"];

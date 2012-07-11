@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MTPhotoView : UIViewController <UIImagePickerControllerDelegate>{
+@interface MTPhotoView : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate>{
     UIImagePickerController *picker;
 }
 

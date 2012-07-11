@@ -7,6 +7,7 @@
 //
 
 #import "MTUserController.h"
+#import "MTLoginController.h"
 
 @interface MTUserController ()
 
@@ -19,6 +20,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self setTitle:@"User profile"];
     }
     return self;
 }
@@ -27,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSLog(@"UserID : %@", [MTLoginController getUserID]);
 }
 
 - (void)viewDidUnload

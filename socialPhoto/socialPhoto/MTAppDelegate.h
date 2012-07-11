@@ -11,6 +11,7 @@
 #import "MTMapController.h"
 #import "MTTopController.h"
 #import "MTPhotoView.h"
+#import "MTLoginController.h"
 
 @interface MTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarDelegate>
 
