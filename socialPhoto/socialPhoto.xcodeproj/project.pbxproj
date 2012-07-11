@@ -205,6 +205,8 @@
 		AC3DF25C15AD3BD100D2068E /* MTUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTUserController.m; sourceTree = "<group>"; };
 		AC3DF25D15AD3BD100D2068E /* MTUserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTUserController.xib; sourceTree = "<group>"; };
 		AC3DF26015AD3E1200D2068E /* MTLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTLoginController.xib; sourceTree = "<group>"; };
+		AC3DF26215AD3EFE00D2068E /* NSString+MD5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		AC3DF26315AD3EFE00D2068E /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		DBA4F7B915AC0CD600B8857A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DBF810B815AC305C00E41659 /* CustomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabBarController.h; sourceTree = "<group>"; };
 		DBF810B915AC305C00E41659 /* CustomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabBarController.m; sourceTree = "<group>"; };
@@ -435,14 +437,16 @@
 		DBF810BA15AC305C00E41659 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				AC3DF26215AD3EFE00D2068E /* NSString+MD5.h */,
+				AC3DF26315AD3EFE00D2068E /* NSString+MD5.m */,
 				DBF810BB15AC305C00E41659 /* MTLoginController.h */,
 				DBF810BC15AC305C00E41659 /* MTLoginController.m */,
 				AC3DF26015AD3E1200D2068E /* MTLoginController.xib */,
 				AC3DF25B15AD3BD000D2068E /* MTUserController.h */,
 				AC3DF25C15AD3BD100D2068E /* MTUserController.m */,
+				DBF810BE15AC305C00E41659 /* MTSignUpController.m */,
 				AC3DF25D15AD3BD100D2068E /* MTUserController.xib */,
 				DBF810BD15AC305C00E41659 /* MTSignUpController.h */,
-				DBF810BE15AC305C00E41659 /* MTSignUpController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
