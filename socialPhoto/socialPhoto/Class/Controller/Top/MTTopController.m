@@ -24,6 +24,7 @@
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
 @property (strong, nonatomic) MTMapController *mapViewController;
+@property (strong, nonatomic) TagSearchController *tagSearchController;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSArray *photosDetails;
@@ -34,6 +35,7 @@
 
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl;
 - (void)searchButtonTapped:(MTSearchButton *)searchButton;
+- (void)refreshData;
 
 @end
 
@@ -46,6 +48,7 @@
 @synthesize gridViewController = _gridViewController;
 @synthesize listViewController = _listViewController;
 @synthesize mapViewController = _mapViewController;
+@synthesize tagSearchController = _tagSearchController;
 
 @synthesize photos = _photos;
 @synthesize photosDetails = _photosDetails;
@@ -89,10 +92,17 @@
 
 #pragma mark - Setters/getters
 
+- (void)setPhotoTag:(NSString *)photoTag {
+  _photoTag = photoTag;
+  
+  [self refreshData];
+}
+
 - (MTSearchButton *)searchButton {
   if (!_searchButton) {
     _searchButton = [[MTSearchButton alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 103)/2, (48-42)/2, 103.0, 40.0)];
     [_searchButton addTarget:self action:@selector(searchButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    _searchButton.searchTag = self.photoTag;
   }
   
   return _searchButton;
@@ -110,6 +120,10 @@
     }
     
     [self.meshtilesFetcher getListPhotoDetailFromPhotoIds:photoIds andUserId:self.userId];
+  } else {
+    _photos = [[NSArray alloc] init];
+    self.photosDetails = [[NSArray alloc] init];
+    [self doneRefreshAndLoad];
   }
 }
 
@@ -126,6 +140,15 @@
   }
   
   return _meshtilesFetcher;
+}
+
+- (TagSearchController *)tagSearchController {
+  if (!_tagSearchController) {
+    _tagSearchController = [[TagSearchController alloc] init];
+    _tagSearchController.tagDelegate = self;
+  }
+  
+  return _tagSearchController;
 }
 
 - (MTGridController *)gridViewController {
@@ -199,12 +222,8 @@ return _mapViewController;
 #pragma mark - Target/Action
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
-    TagSearchController *searchVC = [[TagSearchController alloc] init];
-    searchVC.tagDelegate = self;
     
-    searchVC.title = @"search";
-    
-    [self pushViewController:searchVC animated:YES];
+    [self pushViewController:self.tagSearchController animated:YES];
   
 }
 
@@ -240,6 +259,7 @@ return _mapViewController;
     NSLog(@"Search for %@", photoTag);
     
     self.searchButton.searchTag = photoTag;
+  self.photoTag = photoTag;
 }
 
 
@@ -363,9 +383,6 @@ return _mapViewController;
     
     // Setting the navigation bar color
     self.navigationBar.barStyle = UIBarStyleBlack;
-    
-    
-    [self refreshData];
   }
   return self;
 }
