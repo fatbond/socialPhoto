@@ -69,9 +69,12 @@ static NSString* deviceToken;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are logged in" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
 
+        [self.textField resignFirstResponder];
+
         // Move to User View
         MTUserController *logged = [[MTUserController alloc] initWithNibName:@"MTUserController" bundle:nil];
-        [self.navigationController pushViewController:logged animated:YES];
+        [self.navigationController setViewControllers:[NSArray arrayWithObject:logged] animated:YES];
+        
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Username or password" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -175,7 +178,7 @@ static NSString* deviceToken;
                 self.textField.returnKeyType = UIReturnKeyDone;
                 self.textField.secureTextEntry = YES;
                 self.textField.tag = 2;
-                [self.textField becomeFirstResponder];
+                //[self.textField becomeFirstResponder];
             }
             
             [cell.contentView addSubview:self.textField];
@@ -193,9 +196,7 @@ static NSString* deviceToken;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)theTextField
-{
-    [theTextField resignFirstResponder];
-    
+{    
     [self donePressed:self];
     
     return YES;

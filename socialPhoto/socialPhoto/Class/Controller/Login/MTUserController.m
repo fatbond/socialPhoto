@@ -31,12 +31,16 @@
     // Do any additional setup after loading the view from its nib.
     NSLog(@"UserID : %@", [MTLoginController getUserID]);
 }
+- (IBAction)logout:(id)sender {
+    [MTLoginController setUserID:@""];
+    [MTLoginController setDeviceToken:@""];
+    MTLoginController *logged = [[MTLoginController alloc] initWithNibName:@"MTLoginController" bundle:nil];
+    [self.navigationController setViewControllers:[NSArray arrayWithObject:logged] animated:YES];
+}
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [MTLoginController setUserID:@""];
-    [MTLoginController setDeviceToken:@""];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
