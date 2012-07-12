@@ -212,8 +212,6 @@
     
     [self.searchBar setTintColor:[UIColor grayColor]];
     
-    [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"search_form_bg"] forState:UIControlStateNormal];
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateNormal];
     [button setTitle:@"Done" forState:UIControlStateNormal];

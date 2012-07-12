@@ -8,6 +8,8 @@
 
 #import "MTMapController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 @interface MTMapController(){
 @private
     SBJsonParser *parser;    
@@ -23,14 +25,13 @@
 @synthesize search = _search;
 @synthesize myMap = _myMap;
 @synthesize locationManager = _locationManager;
-//@synthesize photos = _photos;
+@synthesize photos = _photos;
 
 -(void) setPhotos:(NSArray *)photos
 {
     for(ImagePin *pin in listImagePin)
         [self.myMap removeAnnotation:pin];
     [listImagePin removeAllObjects];
-    //self.photos = photos;
     [self meshtilesFetcher:fetcher didFinishedGetListUserPhoto:photos];
 }
 
@@ -260,7 +261,8 @@
     imageGridView.gridDataSource = self;
     imageGridView.canRefresh = FALSE;
     imageGridView.haveNextPage = FALSE;
-    [imageGridView setBackgroundColor:[UIColor colorWithRed:0.47f green:0.23f blue:0.61f alpha:0.3f]];
+    [imageGridView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
+  imageGridView.layer.cornerRadius = 10.0;
     
     fetcher = [[MTFetcher alloc] init];
     [fetcher setDelegate:self];
