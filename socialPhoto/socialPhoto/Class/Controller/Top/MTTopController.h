@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "MTSegmentsController.h"
+#import "MTLoginController.h"
 
 #define MAX_PAGE_ALLOWED  10
 

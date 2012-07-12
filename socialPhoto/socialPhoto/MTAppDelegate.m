@@ -22,12 +22,19 @@
     self.tab = [[CustomTabBarController alloc] init];
     [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
     
+    UIView *view = [[UIView alloc] init];
+    [view setBackgroundColor:[UIColor orangeColor]];
+    
     MTTopController *vc1 = [[MTTopController alloc] init];
-    MTMapController *vc2 = [[MTMapController alloc] init];
-    MTPhotoView *vc3 = [[MTPhotoView alloc] init];
+    UIViewController *vc2 = [[MTMapController alloc] init];
+    UIViewController *vc3 = [[MTPhotoView alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];
     MTLoginController *login = [[MTLoginController alloc] initWithNibName:@"MTLoginController" bundle:nil];
     UINavigationController *vc5 = [[UINavigationController alloc] initWithRootViewController:login];
+    
+    [vc2 setView:view];
+    [vc3 setView:view];
+    [vc4 setView:view];
     
     [self.tab addTabItemWithImage:@"tab_mesh.png" 
                  andSelectedImage:@"tab_mesh_active.png"
@@ -49,6 +56,8 @@
     NSArray *viewControllers = [NSArray arrayWithObjects:vc1, vc2, vc3, vc4, vc5, nil];
     
     [self.tab setViewControllers:viewControllers];
+    [self.tab selectTab:4];
+    [self.tab setSelectedIndex:4];
     
     [self.window addSubview:[self.tab view]];
     

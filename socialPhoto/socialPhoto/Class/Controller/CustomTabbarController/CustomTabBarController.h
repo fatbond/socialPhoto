@@ -14,4 +14,6 @@
 - (void) addTabItemWithImage:(NSString*) normalImageName
             andSelectedImage:(NSString*) selectedImageName
                   andTabName:(NSString *)tabName;
+- (void)selectTab:(int)tabID;
+
 @end
