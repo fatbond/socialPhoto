@@ -26,8 +26,8 @@
     [view setBackgroundColor:[UIColor orangeColor]];
     
     MTTopController *vc1 = [[MTTopController alloc] init];
-    UIViewController *vc2 = [[MTMapController alloc] init];
-    UIViewController *vc3 = [[MTPhotoView alloc] init];
+    UIViewController *vc2 = [[UIViewController alloc] init];
+    UIViewController *vc3 = [[UIViewController alloc] init];
     UIViewController *vc4 = [[UIViewController alloc] init];
     MTLoginController *login = [[MTLoginController alloc] initWithNibName:@"MTLoginController" bundle:nil];
     UINavigationController *vc5 = [[UINavigationController alloc] initWithRootViewController:login];

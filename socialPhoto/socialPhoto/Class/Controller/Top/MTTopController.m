@@ -145,6 +145,7 @@
 - (MTTagSearchController *)tagSearchController {
   _tagSearchController = [[MTTagSearchController alloc] init];
   _tagSearchController.tagDelegate = self;
+    _tagSearchController.userId = self.userId;
   
   return _tagSearchController;
 }
@@ -384,10 +385,6 @@
     // Using predefined data for now
     self.userId = MeshtilesUserId;
     self.photoTag = @"Cat";
-      
-    // Set default userID and taf
-    self.userId = [MTLoginController getUserID];
-    self.photoTag = @"Sexy";
     
     // Setting the navigation bar color
     self.navigationBar.barStyle = UIBarStyleBlack;

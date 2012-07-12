@@ -36,6 +36,8 @@
 
 @property (unsafe_unretained, nonatomic) id <MTTagSearchControllerDelegate> tagDelegate;
 
+@property (strong, nonatomic) NSString *userId;
+
 - (IBAction)xPressed:(id)sender;
 
 @end

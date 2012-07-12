@@ -22,6 +22,7 @@
 
 @implementation MTTagSearchController
 
+@synthesize userId = _userId;
 @synthesize favoriteTags = _favoriteTags;
 @synthesize frequentTags = _frequentTags;
 @synthesize recommendTags = _recommendTags;
@@ -218,12 +219,17 @@
         textField = (UITextField *)view;
     }
     }
+    
     UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tag_search_bg.png"]];
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, searchIcon.frame.size.width + self.tagLabel.frame.size.width, searchIcon.frame.size.height)];
     self.tagLabel.frame = CGRectMake(searchIcon.frame.size.width + 3, 0, self.tagLabel.frame.size.width, self.tagLabel.frame.size.height);
     [leftView addSubview:searchIcon];
     [leftView addSubview:self.tagLabel];
     textField.leftView = leftView;
+    
+    self.xButton.frame = CGRectMake(287, 10, 24, 24);
+    
+    //textField.rightView = self.xButton;
     
     /*
     textField = nil;
@@ -247,11 +253,12 @@
     UITextField *search= [[UITextField alloc] initWithFrame:frame];
     textField = search;
     */
-    
+    /*
     UITextField *searchField = (UITextField *)[[self.searchBar subviews] objectAtIndex:0];
     
     searchField.frame = CGRectMake(0, 0, 160, 44);
-    
+    */
+    /*
     // Hide the clear button
     for (UIView *subview in self.searchBar.subviews)
     {
@@ -260,7 +267,7 @@
                 [(UITextField *)subview setClearButtonMode:UITextFieldViewModeNever];
             }
     }
-    
+    */
     
     [self.searchBar setTintColor:[UIColor grayColor]];
     
@@ -285,9 +292,8 @@
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"doneButtonIcon.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(donePressed:)];
     self.navigationItem.rightBarButtonItem = doneButton; // Create Done button
     */
-    NSString *userId = @"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4";
     
-    [self grabURLInBackground:userId];
+    [self grabURLInBackground:self.userId];
     
     [self.tableView reloadData];
 }
@@ -355,7 +361,6 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    NSString *userId = @"1d6311db-6a2e-4362-a3c3-2a7a7814f7a4";
     NSLog(@"searchBar:textDidChange: isFirstResponder: %i", [self.searchBar isFirstResponder]);
     if (searchText.length != 0)
     {
@@ -363,7 +368,7 @@
         self.beginEditing = YES;
         self.searched = YES;
         NSLog(@"You type: %@", searchText);
-        [self grabRecommendTagURL:userId andKeyword:searchText];
+        [self grabRecommendTagURL:self.userId andKeyword:searchText];
     }
     if (searchText.length == 0)
     {
@@ -509,7 +514,8 @@
                 cell.detailTextLabel.text = [[self.frequentNumberPost objectAtIndex:indexPath.row] stringValue];
         }
     }
-
+    
+    cell.textLabel.textColor = [UIColor grayColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
