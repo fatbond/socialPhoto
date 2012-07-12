@@ -6,17 +6,21 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "TagSearchController.h"
+#import "MTTagSearchController.h"
 
-@interface TagSearchController ()
+@interface MTTagSearchController ()
 
 @property (assign, nonatomic) BOOL beginEditing;
 @property (unsafe_unretained, nonatomic) IBOutlet UITableView *tableView;
 @property (assign, nonatomic) BOOL searched;
 
+@property (strong, nonatomic) ASIHTTPRequest *favoriteTagRequest;
+@property (strong, nonatomic) ASIHTTPRequest *frequentTagRequest;
+@property (strong, nonatomic) ASIHTTPRequest *recommendTagRequest;
+
 @end
 
-@implementation TagSearchController
+@implementation MTTagSearchController
 
 @synthesize favoriteTags = _favoriteTags;
 @synthesize frequentTags = _frequentTags;
@@ -29,12 +33,51 @@
 @synthesize searched = _searched;
 @synthesize tableView = _tableView;
 @synthesize xButton = _xButton;
+@synthesize tagLabel = _tagLabel;
 @synthesize tagDelegate = _tagDelegate;
+@synthesize favoriteTagRequest = _favoriteTagRequest;
+@synthesize frequentTagRequest = _frequentTagRequest;
+@synthesize recommendTagRequest = _recommendTagRequest;
+
+
+
+
+#pragma mark - Setters/getters
+
+- (void)setFavoriteTagRequest:(ASIHTTPRequest *)favoriteTagRequest {
+  if (_favoriteTagRequest) {
+    // Clear delegate and cancel it first
+    [_favoriteTagRequest clearDelegatesAndCancel];
+  }
+  
+  // Then set it to new request
+  _favoriteTagRequest = favoriteTagRequest;
+}
+
+- (void)setFrequentTagRequest:(ASIHTTPRequest *)frequentTagRequest {
+  if (_frequentTagRequest) {
+    // Clear delegate and cancel it first
+    [_frequentTagRequest clearDelegatesAndCancel];
+  }
+  
+  // Then set it to new request
+  _frequentTagRequest = frequentTagRequest;
+}
+
+- (void)setRecommendTagRequest:(ASIHTTPRequest *)recommendTagRequest {
+  if (_recommendTagRequest) {
+    // Clear delegate and cancel it first
+    [_recommendTagRequest clearDelegatesAndCancel];
+  }
+  
+  // Then set it to new request
+  _recommendTagRequest = recommendTagRequest;
+}
 
 - (void)setBeginEditing:(BOOL)beginEditing
 {
     _beginEditing = beginEditing;
-    //NSLog(@"%@", _beginEditing ? @"yes" : @"no");
+    
     [self.tableView reloadData];
 }
 
@@ -70,18 +113,18 @@
     NSURL *frequentTagUrl = [NSURL URLWithString:frequentTagString];
     
     // Create favorite request
-    ASIHTTPRequest *favoriteTagRequest = [[ASIHTTPRequest alloc] initWithURL:favoriteTagUrl];
-    favoriteTagRequest.tag = 1;
-    [favoriteTagRequest setDelegate:self];
+    self.favoriteTagRequest = [[ASIHTTPRequest alloc] initWithURL:favoriteTagUrl];
+    self.favoriteTagRequest.tag = 1;
+    [self.favoriteTagRequest setDelegate:self];
     // Start request
-    [favoriteTagRequest startAsynchronous];
+    [self.favoriteTagRequest startAsynchronous];
     
     // Create frequent request
-    ASIHTTPRequest *frequentTagRequest = [[ASIHTTPRequest alloc] initWithURL:frequentTagUrl];
-    frequentTagRequest.tag = 2;
-    [frequentTagRequest setDelegate:self];
+    self.frequentTagRequest = [[ASIHTTPRequest alloc] initWithURL:frequentTagUrl];
+    self.frequentTagRequest.tag = 2;
+    [self.frequentTagRequest setDelegate:self];
     // Start request
-    [frequentTagRequest startAsynchronous];
+    [self.frequentTagRequest startAsynchronous];
 }
 
 - (void)grabRecommendTagURL:(NSString *) userId andKeyword:(NSString *) keyword
@@ -91,11 +134,11 @@
     NSURL *recommendTagUrl = [NSURL URLWithString:recommendTagString];
     
     // Create recommend request
-    ASIHTTPRequest *recommendTagRequest = [[ASIHTTPRequest alloc] initWithURL:recommendTagUrl];
-    recommendTagRequest.tag = 3;
-    [recommendTagRequest setDelegate:self];
+    self.recommendTagRequest = [[ASIHTTPRequest alloc] initWithURL:recommendTagUrl];
+    self.recommendTagRequest.tag = 3;
+    [self.recommendTagRequest setDelegate:self];
     // Start request
-    [recommendTagRequest startAsynchronous];
+    [self.recommendTagRequest startAsynchronous];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request
@@ -154,6 +197,11 @@
     NSLog(@"Error: %@", error);
 }
 
+
+
+
+#pragma mark - ViewController life cycle
+
 - (void)viewDidLoad
 {
     self.tableView.delegate = self;
@@ -170,8 +218,12 @@
         textField = (UITextField *)view;
     }
     }
-    textField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tag_search_bg.png"]];
-
+    UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tag_search_bg.png"]];
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, searchIcon.frame.size.width + self.tagLabel.frame.size.width, searchIcon.frame.size.height)];
+    self.tagLabel.frame = CGRectMake(searchIcon.frame.size.width + 3, 0, self.tagLabel.frame.size.width, self.tagLabel.frame.size.height);
+    [leftView addSubview:searchIcon];
+    [leftView addSubview:self.tagLabel];
+    textField.leftView = leftView;
     
     /*
     textField = nil;
@@ -211,6 +263,8 @@
     
     
     [self.searchBar setTintColor:[UIColor grayColor]];
+    
+    [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"search_form_bg"] forState:UIControlStateNormal];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateNormal];
@@ -263,6 +317,14 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  
+  [self.recommendTagRequest clearDelegatesAndCancel];
+  [self.frequentTagRequest clearDelegatesAndCancel];
+  [self.favoriteTagRequest clearDelegatesAndCancel];
 }
 
 #pragma mark - Search bar delegate methods
@@ -427,21 +489,22 @@
     
     if (self.beginEditing == YES)
     {
-        cell.textLabel.text = [self.recommendTags objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.recommendTags objectAtIndex:indexPath.row]];
         if ([self.recommendNumberPost count] != 0)
             cell.detailTextLabel.text = [[self.recommendNumberPost objectAtIndex:indexPath.row] stringValue];
     }
     else
     {
         if (indexPath.section == 0) //In favorite section
-        {  
-            cell.textLabel.text = [self.favoriteTags objectAtIndex:indexPath.row];
+        {
+            cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.favoriteTags objectAtIndex:indexPath.row]];
             if ([self.favoriteNumberPost count] != 0)
                 cell.detailTextLabel.text = [[self.favoriteNumberPost objectAtIndex:indexPath.row] stringValue];
         }
+        
         if (indexPath.section == 1) // In frequent section
         {
-            cell.textLabel.text = [self.frequentTags objectAtIndex:indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.frequentTags objectAtIndex:indexPath.row]];
             if ([self.frequentNumberPost count] != 0)
                 cell.detailTextLabel.text = [[self.frequentNumberPost objectAtIndex:indexPath.row] stringValue];
         }

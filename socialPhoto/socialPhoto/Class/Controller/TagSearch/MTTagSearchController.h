@@ -11,9 +11,9 @@
 #import "ASIHTTPRequest.h"
 #import "SBJson.h"
 
-@protocol TagSearchControllerDelegate;
+@protocol MTTagSearchControllerDelegate;
 
-@interface TagSearchController : UIViewController
+@interface MTTagSearchController : UIViewController
                                 <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (strong, nonatomic) NSArray *favoriteTags;
@@ -32,13 +32,15 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *xButton;
 
-@property (unsafe_unretained, nonatomic) id <TagSearchControllerDelegate> tagDelegate;
+@property (strong, nonatomic) IBOutlet UILabel *tagLabel;
+
+@property (unsafe_unretained, nonatomic) id <MTTagSearchControllerDelegate> tagDelegate;
 
 - (IBAction)xPressed:(id)sender;
 
 @end
 
-@protocol TagSearchControllerDelegate
+@protocol MTTagSearchControllerDelegate
 
 - (void)didFinishedSearchingWithTag:(NSString *)photoTag;
 
