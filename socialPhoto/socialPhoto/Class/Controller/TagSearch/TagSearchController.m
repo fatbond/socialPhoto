@@ -157,7 +157,7 @@
 - (void)viewDidLoad
 {
     self.tableView.delegate = self;
-    //self.searchBar.delegate = self;
+    self.searchBar.delegate = self;
     self.beginEditing = NO;
     self.searched = NO;
     
@@ -282,7 +282,7 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height - 216);
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height - 216 + self.tabBarController.tabBar.frame.size.height);
     //searchBar
     
     NSLog(@"begin editing...");

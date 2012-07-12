@@ -205,6 +205,7 @@ return _mapViewController;
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
     TagSearchController *searchVC = [[TagSearchController alloc] init];
+    searchVC.tagDelegate = self;
     
     searchVC.title = @"search";
     
@@ -240,6 +241,8 @@ return _mapViewController;
 
 - (void)didFinishedSearchingWithTag:(NSString *)photoTag {
     NSLog(@"Search for %@", photoTag);
+    
+    self.searchButton.searchTag = photoTag;
 }
 
 
