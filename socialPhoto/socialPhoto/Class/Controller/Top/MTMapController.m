@@ -169,6 +169,7 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+    [self.search resignFirstResponder];
     if([view.annotation isKindOfClass:[ImagePin class]]){        
         NSLog(@"====");
         
@@ -209,12 +210,19 @@
 
 - (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
+    [self.search resignFirstResponder];
     [imageGridView removeFromSuperview];
     if([view.annotation isKindOfClass:[ImagePin class]]){
         view.bounds = CGRectMake(0, 0, 38, 38);
         ((UIImageView*)[view.subviews objectAtIndex:0]).frame = CGRectMake(0, -28, 56, 56);
         ((UIImageView*)[view.subviews objectAtIndex:1]).frame = CGRectMake(7, -23, 38, 38);
     }
+}
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    [self.search resignFirstResponder];
+    //[self performSelectorOnMainThread:@selector(reloadMap) withObject:nil waitUntilDone:FALSE];
 }
 
 // Show searched location
@@ -262,7 +270,7 @@
     imageGridView.canRefresh = FALSE;
     imageGridView.haveNextPage = FALSE;
     [imageGridView setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
-  imageGridView.layer.cornerRadius = 10.0;
+    imageGridView.layer.cornerRadius = 10.0;
     
     fetcher = [[MTFetcher alloc] init];
     [fetcher setDelegate:self];
