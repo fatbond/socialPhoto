@@ -27,3 +27,10 @@
 @property (nonatomic, strong) NSArray *photos;
 
 @end
+
+@protocol MTMapControllerDelegate
+
+@optional
+- (void)imageTappedAtIndex:(NSUInteger)index;
+
+@end

@@ -9,12 +9,25 @@
 #import "ImagePin.h"
 
 @interface ImagePin()
-   @property (strong) NSURL *url;
+    @property (strong) NSURL *url;
+    @property (assign) bool isFocus;
 @end
 
 @implementation ImagePin
 @synthesize coordinate;
 @synthesize url = _url;
+@synthesize isFocus = _isFocus;
+@synthesize index = _index;
+
+- (void)changeFocus:(bool) state
+{
+    self.isFocus = state;
+}
+
+- (bool)isFocused
+{
+    return self.isFocus;
+}
 
 -(NSURL*) getURL
 {

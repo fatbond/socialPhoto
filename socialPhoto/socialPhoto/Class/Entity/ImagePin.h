@@ -13,9 +13,14 @@
     CLLocationCoordinate2D coor;
 }
 
+- (void)changeFocus:(bool)state;
+- (bool)isFocused;
+
 - (NSURL *) getURL;
 - (CLLocationCoordinate2D) getCoordinate;
 - (id)initWithCoordinate:(CLLocationCoordinate2D) c
       andURL:(NSURL*) imageURL;
+
+@property (assign) NSInteger index;
 
 @end

@@ -90,10 +90,12 @@
 
 - (void)    pinImageWithURL:(NSURL *)url
             atLongitude:(float) longitude
-            atLatitude:(float) latitude{
+            atLatitude:(float) latitude
+             withIndex:(NSInteger)index{
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(latitude, longitude);
     ImagePin *annView = [[ImagePin alloc] initWithCoordinate:location 
                                           andURL:url];
+    annView.index = index;
     [listImagePin addObject:annView];
     [self.myMap addAnnotation:annView]; 
 }
@@ -117,13 +119,20 @@
         if((lon < 0)||(lon > 180)) ;
         else if((lat < -90)&&(lat > 90)) ;
         else {
-            [self pinImageWithURL:imageURL atLongitude:lon atLatitude:lat];
+            [self pinImageWithURL:imageURL 
+                      atLongitude:lon atLatitude:lat 
+                        withIndex:[photos indexOfObject:photo]];
             i++;
         }
         // if(i >= 3) break; // Only load 3 image
     }
+    //[self performSelectorOnMainThread:@selector(reloadMap) withObject:nil waitUntilDone:FALSE];
 }
 
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    [self.search resignFirstResponder];
+}
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id < MKAnnotation >)annotation
 {
@@ -172,9 +181,15 @@
     [self.search resignFirstResponder];
     if([view.annotation isKindOfClass:[ImagePin class]]){        
         NSLog(@"====");
-        
+                
         [listImageToShow removeAllObjects];
         
+        if([(ImagePin*)view.annotation isFocused])
+        {
+            // Jump to List view
+            NSLog(@"%d", ((ImagePin*)view.annotation).index);
+        }
+        else{
         // Check others image is overlapped or not
         for(ImagePin *ann in self.myMap.annotations)
             if([ann isKindOfClass:[ImagePin class]]){
@@ -186,9 +201,12 @@
                 CGRect rect = CGRectMake(point.x-buffer.size.width/2, point.y-buffer.size.height/2, buffer.size.width, buffer.size.height);
                 
                 if(CGRectContainsPoint(rect, touchPoint)) {
+                    [ann changeFocus:YES];
                     NSLog(@"%@", [((ImagePin*)(ann)) getURL]);
                     [listImageToShow addObject:ann];
                     //NSLog(@"Tap");
+                }else{
+                    [ann changeFocus:NO];
                 }
             }
         
@@ -205,6 +223,7 @@
             [self.view addSubview:imageGridView];
             NSLog(@"Grid View");
         }
+        }
     }
 }
 
@@ -213,16 +232,11 @@
     [self.search resignFirstResponder];
     [imageGridView removeFromSuperview];
     if([view.annotation isKindOfClass:[ImagePin class]]){
+        [(ImagePin*)view.annotation changeFocus:NO];
         view.bounds = CGRectMake(0, 0, 38, 38);
         ((UIImageView*)[view.subviews objectAtIndex:0]).frame = CGRectMake(0, -28, 56, 56);
         ((UIImageView*)[view.subviews objectAtIndex:1]).frame = CGRectMake(7, -23, 38, 38);
     }
-}
-
-- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
-{
-    [self.search resignFirstResponder];
-    //[self performSelectorOnMainThread:@selector(reloadMap) withObject:nil waitUntilDone:FALSE];
 }
 
 // Show searched location
