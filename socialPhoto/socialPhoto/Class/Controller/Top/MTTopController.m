@@ -80,8 +80,7 @@
   self.listViewController.photos = self.photos;
   self.listViewController.photosDetails = self.photosDetails;
   
-#warning mapViewController photo setter problem
-//  self.mapViewController.photos = self.photos;
+  self.mapViewController.photos = self.photos;
   
   
   [self.gridViewController doneRefreshAndLoad];
@@ -169,10 +168,6 @@ return _mapViewController;
     _segmentedControl.frame = CGRectMake(0, 0, 216.0, 26.0);
 
     _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    
-    [_segmentedControl addTarget:self.segmentsController
-                          action:@selector(indexDidChangeForSegmentedControl:)
-                forControlEvents:UIControlEventValueChanged];
     [_segmentedControl addTarget:self 
                           action:@selector(indexDidChangeForSegmentedControl:) 
                 forControlEvents:UIControlEventValueChanged];
@@ -231,6 +226,8 @@ return _mapViewController;
     
     // Insert the searchButton to proper viewController
     [((UIViewController *)[self.segmentViewControllers objectAtIndex:segmentedControl.selectedSegmentIndex]).view addSubview:self.searchButton];
+    
+    [self.segmentsController indexDidChangeForSegmentedControl:segmentedControl];
   }
 }
 
@@ -250,7 +247,7 @@ return _mapViewController;
 - (void)imageTappedAtIndex:(NSUInteger)index {
   [self.listViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
   self.segmentedControl.selectedSegmentIndex = 1;
-  [self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
+  [self indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 
@@ -375,7 +372,7 @@ return _mapViewController;
   [super viewDidLoad];
 	// Do any additional setup after loading the view.
   self.segmentedControl.selectedSegmentIndex = 0;
-  [self.segmentsController indexDidChangeForSegmentedControl:self.segmentedControl];
+  [self indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 - (void)viewDidUnload
