@@ -259,6 +259,9 @@
   
   self.searchButton.searchTag = photoTag;
   self.photoTag = photoTag;
+  
+  self.segmentedControl.selectedSegmentIndex = 0;
+  [self indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
 #pragma mark - MTImageGridViewDelegate methods
@@ -281,7 +284,7 @@
 #pragma mark - Data loading
 
 - (void)refreshData {
-  _photos = nil;
+  self.photos = nil;
   self.gridViewController.imageGridView.haveNextPage = NO;
   self.listViewController.tableView.haveNextPage = NO;
   
