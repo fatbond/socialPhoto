@@ -11,6 +11,7 @@
 #import "MTGridController.h"
 #import "MTListViewController.h"
 #import "MTMapController.h"
+#import "TagSearchController.h"
 
 #import "MTSearchButton.h"
 
@@ -18,7 +19,7 @@
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
 
-@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate>
+@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, TagSearchControllerDelegate>
 
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
@@ -79,7 +80,8 @@
   self.listViewController.photos = self.photos;
   self.listViewController.photosDetails = self.photosDetails;
   
-  self.mapViewController.photos = self.photos;
+#warning mapViewController photo setter problem
+//  self.mapViewController.photos = self.photos;
   
   
   [self.gridViewController doneRefreshAndLoad];
@@ -202,13 +204,11 @@ return _mapViewController;
 #pragma mark - Target/Action
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
-#warning Implement switching to searchViewController here
-  
-  UIViewController *aVC = [[UIViewController alloc] init];
-  aVC.view.backgroundColor = [UIColor greenColor];
-  aVC.title = @"search";
-  
-  [self pushViewController:aVC animated:YES];
+    TagSearchController *searchVC = [[TagSearchController alloc] init];
+    
+    searchVC.title = @"search";
+    
+    [self pushViewController:searchVC animated:YES];
   
 }
 
@@ -232,6 +232,14 @@ return _mapViewController;
     // Insert the searchButton to proper viewController
     [((UIViewController *)[self.segmentViewControllers objectAtIndex:segmentedControl.selectedSegmentIndex]).view addSubview:self.searchButton];
   }
+}
+
+
+
+#pragma mark - TagSearchControllerDelegate methods
+
+- (void)didFinishedSearchingWithTag:(NSString *)photoTag {
+    NSLog(@"Search for %@", photoTag);
 }
 
 
