@@ -11,7 +11,7 @@
 #import "MTGridController.h"
 #import "MTListViewController.h"
 #import "MTMapController.h"
-#import "TagSearchController.h"
+#import "MTTagSearchController.h"
 
 #import "MTSearchButton.h"
 
@@ -19,12 +19,12 @@
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
 
-@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, TagSearchControllerDelegate>
+@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, MTTagSearchControllerDelegate>
 
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
 @property (strong, nonatomic) MTMapController *mapViewController;
-@property (strong, nonatomic) TagSearchController *tagSearchController;
+@property (strong, nonatomic) MTTagSearchController *tagSearchController;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSArray *photosDetails;
@@ -142,11 +142,9 @@
   return _meshtilesFetcher;
 }
 
-- (TagSearchController *)tagSearchController {
-  if (!_tagSearchController) {
-    _tagSearchController = [[TagSearchController alloc] init];
-    _tagSearchController.tagDelegate = self;
-  }
+- (MTTagSearchController *)tagSearchController {
+  _tagSearchController = [[MTTagSearchController alloc] init];
+  _tagSearchController.tagDelegate = self;
   
   return _tagSearchController;
 }
@@ -178,7 +176,7 @@
     _mapViewController.title = @"Map";
   }
   
-return _mapViewController;
+  return _mapViewController;
 }
 
 - (UISegmentedControl *)segmentedControl {
@@ -189,7 +187,7 @@ return _mapViewController;
     [_segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"header_list_view.png"] atIndex:1 animated:NO];
     [_segmentedControl insertSegmentWithImage:[UIImage imageNamed:@"header_map_view.png"] atIndex:2 animated:NO];
     _segmentedControl.frame = CGRectMake(0, 0, 216.0, 26.0);
-
+    
     _segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     [_segmentedControl addTarget:self 
                           action:@selector(indexDidChangeForSegmentedControl:) 
@@ -222,8 +220,8 @@ return _mapViewController;
 #pragma mark - Target/Action
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
-    
-    [self pushViewController:self.tagSearchController animated:YES];
+  
+  [self pushViewController:self.tagSearchController animated:YES];
   
 }
 
@@ -256,9 +254,9 @@ return _mapViewController;
 #pragma mark - TagSearchControllerDelegate methods
 
 - (void)didFinishedSearchingWithTag:(NSString *)photoTag {
-    NSLog(@"Search for %@", photoTag);
-    
-    self.searchButton.searchTag = photoTag;
+  NSLog(@"Search for %@", photoTag);
+  
+  self.searchButton.searchTag = photoTag;
   self.photoTag = photoTag;
 }
 

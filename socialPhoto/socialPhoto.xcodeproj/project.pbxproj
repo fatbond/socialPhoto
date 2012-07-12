@@ -147,8 +147,8 @@
 		DBF811C515AC305C00E41659 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBF8116615AC305C00E41659 /* Localizable.strings */; };
 		DBF811C615AC305C00E41659 /* MTMapController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBF8116A15AC305C00E41659 /* MTMapController.xib */; };
 		DBF811C715AC305C00E41659 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF8116C15AC305C00E41659 /* main.m */; };
-		EEDE92A815AE698F005A4139 /* TagSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE92A715AE698F005A4139 /* TagSearchController.m */; };
-		EEDE92AA15AE69A5005A4139 /* TagSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92A915AE69A5005A4139 /* TagSearchController.xib */; };
+		EEDE92A815AE698F005A4139 /* MTTagSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEDE92A715AE698F005A4139 /* MTTagSearchController.m */; };
+		EEDE92AA15AE69A5005A4139 /* MTTagSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92A915AE69A5005A4139 /* MTTagSearchController.xib */; };
 		EEDE92AD15AE6A2B005A4139 /* clearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92AB15AE6A2B005A4139 /* clearButton.png */; };
 		EEDE92AE15AE6A2B005A4139 /* clearButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92AC15AE6A2B005A4139 /* clearButton@2x.png */; };
 		EEDE92B215AE6CD9005A4139 /* whiteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92B115AE6CD9005A4139 /* whiteBackground.png */; };
@@ -395,9 +395,9 @@
 		DBF8116C15AC305C00E41659 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DBF8116D15AC305C00E41659 /* socialPhoto-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "socialPhoto-Info.plist"; sourceTree = "<group>"; };
 		DBF8116E15AC305C00E41659 /* socialPhoto-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "socialPhoto-Prefix.pch"; sourceTree = "<group>"; };
-		EEDE92A615AE698F005A4139 /* TagSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagSearchController.h; path = TagSearch/TagSearchController.h; sourceTree = "<group>"; };
-		EEDE92A715AE698F005A4139 /* TagSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagSearchController.m; path = TagSearch/TagSearchController.m; sourceTree = "<group>"; };
-		EEDE92A915AE69A5005A4139 /* TagSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagSearchController.xib; sourceTree = "<group>"; };
+		EEDE92A615AE698F005A4139 /* MTTagSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = MTTagSearchController.h; path = TagSearch/MTTagSearchController.h; sourceTree = "<group>"; };
+		EEDE92A715AE698F005A4139 /* MTTagSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTagSearchController.m; path = TagSearch/MTTagSearchController.m; sourceTree = "<group>"; };
+		EEDE92A915AE69A5005A4139 /* MTTagSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTagSearchController.xib; sourceTree = "<group>"; };
 		EEDE92AB15AE6A2B005A4139 /* clearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearButton.png; sourceTree = "<group>"; };
 		EEDE92AC15AE6A2B005A4139 /* clearButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clearButton@2x.png"; sourceTree = "<group>"; };
 		EEDE92B115AE6CD9005A4139 /* whiteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBackground.png; sourceTree = "<group>"; };
@@ -879,7 +879,7 @@
 		DBF8116915AC305C00E41659 /* Nib */ = {
 			isa = PBXGroup;
 			children = (
-				EEDE92A915AE69A5005A4139 /* TagSearchController.xib */,
+				EEDE92A915AE69A5005A4139 /* MTTagSearchController.xib */,
 				4AC7C7F115AC72E2008F696C /* MTPhotoView.xib */,
 				DBF8116A15AC305C00E41659 /* MTMapController.xib */,
 			);
@@ -899,8 +899,8 @@
 		EEDE92A515AE6915005A4139 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				EEDE92A615AE698F005A4139 /* TagSearchController.h */,
-				EEDE92A715AE698F005A4139 /* TagSearchController.m */,
+				EEDE92A615AE698F005A4139 /* MTTagSearchController.h */,
+				EEDE92A715AE698F005A4139 /* MTTagSearchController.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1052,7 +1052,7 @@
 				4A90925015AD6942006DF8EF /* time_newest_post_bullet_bg@2x.png in Resources */,
 				4A90925115AD6942006DF8EF /* title_search_bg.png in Resources */,
 				4A90925215AD6942006DF8EF /* title_search_bg@2x.png in Resources */,
-				EEDE92AA15AE69A5005A4139 /* TagSearchController.xib in Resources */,
+				EEDE92AA15AE69A5005A4139 /* MTTagSearchController.xib in Resources */,
 				EEDE92AD15AE6A2B005A4139 /* clearButton.png in Resources */,
 				EEDE92AE15AE6A2B005A4139 /* clearButton@2x.png in Resources */,
 				EEDE92B215AE6CD9005A4139 /* whiteBackground.png in Resources */,
@@ -1128,7 +1128,7 @@
 				AC3DF25E15AD3BD300D2068E /* MTUserController.m in Sources */,
 				4A90921E15AD53EE006DF8EF /* NSString+MD5.m in Sources */,
 				4A90925515AD75E1006DF8EF /* MTSearchButton.m in Sources */,
-				EEDE92A815AE698F005A4139 /* TagSearchController.m in Sources */,
+				EEDE92A815AE698F005A4139 /* MTTagSearchController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
