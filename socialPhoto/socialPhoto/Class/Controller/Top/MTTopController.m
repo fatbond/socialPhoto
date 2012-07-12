@@ -11,7 +11,7 @@
 #import "MTGridController.h"
 #import "MTListViewController.h"
 #import "MTMapController.h"
-#import "MTTagSearchController.h"
+#import "MTSearchTagController.h"
 
 #import "MTSearchButton.h"
 
@@ -19,12 +19,12 @@
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
 
-@interface MTTopController () <MTMapControllerDelegate, MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, MTTagSearchControllerDelegate>
+@interface MTTopController () <MTMapControllerDelegate, MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, MTSearchTagControllerDelegate>
 
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
 @property (strong, nonatomic) MTMapController *mapViewController;
-@property (strong, nonatomic) MTTagSearchController *tagSearchController;
+@property (strong, nonatomic) MTSearchTagController *tagSearchController;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSArray *photosDetails;
@@ -151,8 +151,8 @@
   return _meshtilesFetcher;
 }
 
-- (MTTagSearchController *)tagSearchController {
-  _tagSearchController = [[MTTagSearchController alloc] initWithNibName:@"MTTagSearchController.xib" bundle:nil];
+- (MTSearchTagController *)tagSearchController {
+  _tagSearchController = [[MTSearchTagController alloc] initWithNibName:@"MTTagSearchController.xib" bundle:nil];
   _tagSearchController.tagDelegate = self;
     _tagSearchController.userId = self.userId;
   

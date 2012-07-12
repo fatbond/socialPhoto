@@ -21,6 +21,10 @@
     if (self) {
         // Custom initialization
         [self setTitle:@"User profile"];
+      [self.view setBackgroundColor:[UIColor colorWithRed:237.0/255.0
+                                                    green:234.0/255.0
+                                                     blue:229.0/255.0
+                                                    alpha:1.0]];
     }
     return self;
 }

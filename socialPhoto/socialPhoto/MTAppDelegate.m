@@ -23,7 +23,10 @@
     [self.tab changeBackgroundImage:[UIImage imageNamed:@"tab_bg.png"]];  
     
     UIView *view = [[UIView alloc] init];
-    [view setBackgroundColor:[UIColor orangeColor]];
+  [view setBackgroundColor:[UIColor colorWithRed:237.0/255.0
+                                           green:234.0/255.0
+                                            blue:229.0/255.0
+                                           alpha:1.0]];
     
     MTTopController *vc1 = [[MTTopController alloc] init];
     UIViewController *vc2 = [[UIViewController alloc] init];
