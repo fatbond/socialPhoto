@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 @interface MTUserController : UIViewController
+
+@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *userImage;
 
 @end

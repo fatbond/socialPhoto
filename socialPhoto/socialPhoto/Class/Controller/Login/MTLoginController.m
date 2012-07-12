@@ -11,6 +11,7 @@
 
 static NSString* userID;
 static NSString* deviceToken;
+static NSString* userImageURL;
 
 @implementation MTLoginController
 @synthesize textField = _textfield;
@@ -19,6 +20,10 @@ static NSString* deviceToken;
 
 + (NSString*) getUserID{
     return userID;
+}
+
++ (NSString*)getUserImageURL {
+  return userImageURL;
 }
 
 + (void) setUserID:(NSString*)newUserID{
@@ -65,10 +70,8 @@ static NSString* deviceToken;
     Boolean isSuccess = [[json valueForKey:@"is_success"] boolValue];
     if(isSuccess){
         [MTLoginController setUserID:[json valueForKey:@"user_id"]];
+      userImageURL = [json valueForKey:@"url_image"];
 //        NSLog(@"userId: %@", [MTLoginController getUserID]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You are logged in" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-
         [self.textField resignFirstResponder];
 
         // Move to User View

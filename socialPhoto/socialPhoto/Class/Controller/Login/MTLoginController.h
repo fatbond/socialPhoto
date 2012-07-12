@@ -23,6 +23,7 @@
 
 + (NSString*) getUserID;
 + (NSString*) getDeviceToken;
++ (NSString*) getUserImageURL;
 
 + (void) setUserID:(NSString*)newUserID;
 + (void) setDeviceToken:(NSString*)newDeviceToken;
