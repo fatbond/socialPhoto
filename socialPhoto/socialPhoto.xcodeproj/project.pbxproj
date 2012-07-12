@@ -395,7 +395,7 @@
 		DBF8116C15AC305C00E41659 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DBF8116D15AC305C00E41659 /* socialPhoto-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "socialPhoto-Info.plist"; sourceTree = "<group>"; };
 		DBF8116E15AC305C00E41659 /* socialPhoto-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "socialPhoto-Prefix.pch"; sourceTree = "<group>"; };
-		EEDE92A615AE698F005A4139 /* MTTagSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = MTTagSearchController.h; path = TagSearch/MTTagSearchController.h; sourceTree = "<group>"; };
+		EEDE92A615AE698F005A4139 /* MTTagSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MTTagSearchController.h; path = TagSearch/MTTagSearchController.h; sourceTree = "<group>"; };
 		EEDE92A715AE698F005A4139 /* MTTagSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MTTagSearchController.m; path = TagSearch/MTTagSearchController.m; sourceTree = "<group>"; };
 		EEDE92A915AE69A5005A4139 /* MTTagSearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTagSearchController.xib; sourceTree = "<group>"; };
 		EEDE92AB15AE6A2B005A4139 /* clearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearButton.png; sourceTree = "<group>"; };

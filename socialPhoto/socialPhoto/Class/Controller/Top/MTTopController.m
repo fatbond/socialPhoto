@@ -19,7 +19,7 @@
 #import "MTPhotoDetail.h"
 #import "MTFetcher.h"
 
-@interface MTTopController () <MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, MTTagSearchControllerDelegate>
+@interface MTTopController () <MTMapControllerDelegate, MTFetcherDelegate, MTRefreshableTableViewDelegate, MTImageGridViewDelegate, MTTagSearchControllerDelegate>
 
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
@@ -174,6 +174,7 @@
   if (!_mapViewController) {
     _mapViewController = [[MTMapController alloc] init];
     _mapViewController.title = @"Map";
+      _mapViewController.delegate = self;
   }
   
   return _mapViewController;
@@ -260,9 +261,6 @@
   self.photoTag = photoTag;
 }
 
-
-
-
 #pragma mark - MTImageGridViewDelegate methods
 
 - (void)imageTappedAtIndex:(NSUInteger)index {
@@ -271,8 +269,13 @@
   [self indexDidChangeForSegmentedControl:self.segmentedControl];
 }
 
-
-
+#pragma mark - MTMapControllerDelegate methods
+- (void)imageTappedAtIndexMap:(NSUInteger)index
+{
+    [self.listViewController.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    self.segmentedControl.selectedSegmentIndex = 1;
+    [self indexDidChangeForSegmentedControl:self.segmentedControl];
+}
 
 
 #pragma mark - Data loading

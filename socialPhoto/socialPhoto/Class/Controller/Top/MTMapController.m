@@ -26,6 +26,12 @@
 @synthesize myMap = _myMap;
 @synthesize locationManager = _locationManager;
 @synthesize photos = _photos;
+@synthesize delegate;
+
+- (NSInteger) imageIndex
+{
+    return currentIndex;
+}
 
 -(void) setPhotos:(NSArray *)photos
 {
@@ -167,8 +173,8 @@
         annView.frame = CGRectMake(0, -23, 48, 38);
        
         UIButton *myButton = [[UIButton alloc] initWithFrame:CGRectMake(7, -27, 52, 52)];
-        [myButton setEnabled:NO];
         [myButton addTarget:self action:@selector(select) forControlEvents:UIControlEventTouchUpInside];
+        [myButton setEnabled:NO];
         
         [annView insertSubview:bgView atIndex:0];
         [annView insertSubview:myView atIndex:1];
@@ -185,6 +191,7 @@
 - (void) select
 {
     NSLog(@"%d", currentIndex);
+    [self.delegate imageTappedAtIndexMap:currentIndex];
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view

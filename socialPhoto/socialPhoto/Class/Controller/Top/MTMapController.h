@@ -16,6 +16,8 @@
 #import "ImagePin.h"
 #import "MTImageGridView.h"
 
+@protocol MTMapControllerDelegate;
+
 @interface MTMapController : UIViewController <MKMapViewDelegate, UISearchBarDelegate, MTFetcherDelegate, MTImageGridViewDelegate, MTImageGridViewDatasource>
 
 @property (unsafe_unretained, nonatomic) IBOutlet UISearchBar *search;
@@ -24,13 +26,17 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property (unsafe_unretained, nonatomic) id <MTMapControllerDelegate> delegate;
+
 @property (nonatomic, strong) NSArray *photos;
+
+- (NSInteger) imageIndex;
 
 @end
 
 @protocol MTMapControllerDelegate
 
 @optional
-- (void)imageTappedAtIndex:(NSUInteger)index;
+- (void)imageTappedAtIndexMap:(NSUInteger)index;
 
 @end
