@@ -92,6 +92,15 @@
 
 #pragma mark - Setters/getters
 
+- (void)setUserId:(NSString *)userId {
+  // Reset everything when userId change
+  _userId = userId;
+  
+  self.photoTag = @"";
+  self.searchButton.searchTag = @"";
+  [self refreshData];
+}
+
 - (void)setPhotoTag:(NSString *)photoTag {
   _photoTag = photoTag;
   
@@ -143,7 +152,7 @@
 }
 
 - (MTTagSearchController *)tagSearchController {
-  _tagSearchController = [[MTTagSearchController alloc] init];
+  _tagSearchController = [[MTTagSearchController alloc] initWithNibName:@"MTTagSearchController.xib" bundle:nil];
   _tagSearchController.tagDelegate = self;
     _tagSearchController.userId = self.userId;
   
@@ -382,14 +391,16 @@
   if (self) {
     // Custom initialization
     
-    // Using predefined data for now
-    self.userId = MeshtilesUserId;
-    self.photoTag = @"Cat";
-    
     // Setting the navigation bar color
     self.navigationBar.barStyle = UIBarStyleBlack;
   }
   return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  self.userId = [MTLoginController getUserID];
 }
 
 - (void)viewDidLoad
