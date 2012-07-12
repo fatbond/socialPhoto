@@ -24,6 +24,7 @@
 @property (strong, nonatomic) MTGridController *gridViewController;
 @property (strong, nonatomic) MTListViewController *listViewController;
 @property (strong, nonatomic) MTMapController *mapViewController;
+@property (strong, nonatomic) TagSearchController *tagSearchController;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) NSArray *photosDetails;
@@ -34,6 +35,7 @@
 
 - (void)indexDidChangeForSegmentedControl:(UISegmentedControl *)segmentedControl;
 - (void)searchButtonTapped:(MTSearchButton *)searchButton;
+- (void)refreshData;
 
 @end
 
@@ -46,6 +48,7 @@
 @synthesize gridViewController = _gridViewController;
 @synthesize listViewController = _listViewController;
 @synthesize mapViewController = _mapViewController;
+@synthesize tagSearchController = _tagSearchController;
 
 @synthesize photos = _photos;
 @synthesize photosDetails = _photosDetails;
@@ -139,6 +142,15 @@
   return _meshtilesFetcher;
 }
 
+- (TagSearchController *)tagSearchController {
+  if (!_tagSearchController) {
+    _tagSearchController = [[TagSearchController alloc] init];
+    _tagSearchController.tagDelegate = self;
+  }
+  
+  return _tagSearchController;
+}
+
 - (MTGridController *)gridViewController {
   if (!_gridViewController) {
     _gridViewController = [[MTGridController alloc] init];
@@ -210,12 +222,8 @@ return _mapViewController;
 #pragma mark - Target/Action
 
 - (void)searchButtonTapped:(MTSearchButton *)searchButton {
-    TagSearchController *searchVC = [[TagSearchController alloc] init];
-    searchVC.tagDelegate = self;
     
-    searchVC.title = @"search";
-    
-    [self pushViewController:searchVC animated:YES];
+    [self pushViewController:self.tagSearchController animated:YES];
   
 }
 
