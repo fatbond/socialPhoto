@@ -11,13 +11,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface MTMapController(){
-@private
     SBJsonParser *parser;    
     LocationPin *addAnnotation;
     NSMutableArray *listImagePin;
     NSMutableArray *listImageToShow;
     MTImageGridView *imageGridView;
     MTFetcher *fetcher;
+    NSInteger currentIndex;
 }
 @end
 
@@ -166,8 +166,13 @@
         
         annView.frame = CGRectMake(0, -23, 48, 38);
        
+        UIButton *myButton = [[UIButton alloc] initWithFrame:CGRectMake(7, -27, 52, 52)];
+        [myButton setEnabled:NO];
+        [myButton addTarget:self action:@selector(select) forControlEvents:UIControlEventTouchUpInside];
+        
         [annView insertSubview:bgView atIndex:0];
         [annView insertSubview:myView atIndex:1];
+        [annView insertSubview:myButton atIndex:2];
         
         return annView;
     }
@@ -176,20 +181,33 @@
     return nil;
 }
 
+// Double click on the annotationView
+- (void) select
+{
+    NSLog(@"%d", currentIndex);
+}
+
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
+//    if([view isSelected]){
+//        NSLog(@"%d", ((ImagePin*)view.annotation).index);
+//    }
+    [(UIButton*)[view.subviews objectAtIndex:2] setEnabled:YES];
+    currentIndex = ((ImagePin*)view.annotation).index;
+    
     [self.search resignFirstResponder];
     if([view.annotation isKindOfClass:[ImagePin class]]){        
         NSLog(@"====");
                 
         [listImageToShow removeAllObjects];
         
-        if([(ImagePin*)view.annotation isFocused])
-        {
-            // Jump to List view
-            NSLog(@"%d", ((ImagePin*)view.annotation).index);
-        }
-        else{
+//        if([(ImagePin*)view.annotation isFocused])
+//        {
+//            // Jump to List view
+//        }
+//        else{
+        [(ImagePin*)view.annotation changeFocus:YES];
+
         // Check others image is overlapped or not
         for(ImagePin *ann in self.myMap.annotations)
             if([ann isKindOfClass:[ImagePin class]]){
@@ -201,12 +219,11 @@
                 CGRect rect = CGRectMake(point.x-buffer.size.width/2, point.y-buffer.size.height/2, buffer.size.width, buffer.size.height);
                 
                 if(CGRectContainsPoint(rect, touchPoint)) {
-                    [ann changeFocus:YES];
-                    NSLog(@"%@", [((ImagePin*)(ann)) getURL]);
+                    // NSLog(@"%@", [((ImagePin*)(ann)) getURL]);
                     [listImageToShow addObject:ann];
                     //NSLog(@"Tap");
                 }else{
-                    [ann changeFocus:NO];
+                    //[ann changeFocus:NO];
                 }
             }
         
@@ -223,7 +240,7 @@
             [self.view addSubview:imageGridView];
             NSLog(@"Grid View");
         }
-        }
+       // }
     }
 }
 
@@ -260,6 +277,8 @@
 }
 
 -(void) imageTappedAtIndex:(NSUInteger)index{
+    currentIndex = ((ImagePin*)[listImageToShow objectAtIndex:index]).index;
+    [self select];
 }
 
 #pragma mark - View lifecycle
