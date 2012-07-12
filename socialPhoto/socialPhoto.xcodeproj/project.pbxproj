@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047B112B15AEE89800A57221 /* search_form_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 047B112915AEE89800A57221 /* search_form_bg.png */; };
+		047B112C15AEE89800A57221 /* search_form_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 047B112A15AEE89800A57221 /* search_form_bg@2x.png */; };
 		251D6BEF15A555C3006F5447 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D6BEE15A555C3006F5447 /* CoreLocation.framework */; };
 		251D6BF115A555CC006F5447 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D6BF015A555CC006F5447 /* SystemConfiguration.framework */; };
 		251D6BF315A555DA006F5447 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251D6BF215A555DA006F5447 /* MobileCoreServices.framework */; };
@@ -184,6 +186,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		047B112915AEE89800A57221 /* search_form_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_form_bg.png; sourceTree = "<group>"; };
+		047B112A15AEE89800A57221 /* search_form_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_form_bg@2x.png"; sourceTree = "<group>"; };
 		251D6BEE15A555C3006F5447 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		251D6BF015A555CC006F5447 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		251D6BF215A555DA006F5447 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -843,6 +847,8 @@
 				4A90924615AD6935006DF8EF /* no_hit.png */,
 				4A90924715AD6935006DF8EF /* no_hit@2x.png */,
 				DBF8115915AC305C00E41659 /* placeholder.png */,
+				047B112915AEE89800A57221 /* search_form_bg.png */,
+				047B112A15AEE89800A57221 /* search_form_bg@2x.png */,
 				DBF8115A15AC305C00E41659 /* tab_bg.png */,
 				DBF8115B15AC305C00E41659 /* tab_mesh.png */,
 				DBF8115C15AC305C00E41659 /* tab_mesh_active.png */,
@@ -1050,6 +1056,8 @@
 				EEDE92AD15AE6A2B005A4139 /* clearButton.png in Resources */,
 				EEDE92AE15AE6A2B005A4139 /* clearButton@2x.png in Resources */,
 				EEDE92B215AE6CD9005A4139 /* whiteBackground.png in Resources */,
+				047B112B15AEE89800A57221 /* search_form_bg.png in Resources */,
+				047B112C15AEE89800A57221 /* search_form_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

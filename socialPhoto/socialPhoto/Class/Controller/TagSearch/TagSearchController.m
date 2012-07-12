@@ -29,12 +29,13 @@
 @synthesize searched = _searched;
 @synthesize tableView = _tableView;
 @synthesize xButton = _xButton;
+@synthesize tagLabel = _tagLabel;
 @synthesize tagDelegate = _tagDelegate;
 
 - (void)setBeginEditing:(BOOL)beginEditing
 {
     _beginEditing = beginEditing;
-    //NSLog(@"%@", _beginEditing ? @"yes" : @"no");
+    
     [self.tableView reloadData];
 }
 
@@ -170,8 +171,12 @@
         textField = (UITextField *)view;
     }
     }
-    textField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tag_search_bg.png"]];
-
+    UIImageView *searchIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_tag_search_bg.png"]];
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, searchIcon.frame.size.width + self.tagLabel.frame.size.width, searchIcon.frame.size.height)];
+    self.tagLabel.frame = CGRectMake(searchIcon.frame.size.width + 3, 0, self.tagLabel.frame.size.width, self.tagLabel.frame.size.height);
+    [leftView addSubview:searchIcon];
+    [leftView addSubview:self.tagLabel];
+    textField.leftView = leftView;
     
     /*
     textField = nil;
@@ -211,6 +216,8 @@
     
     
     [self.searchBar setTintColor:[UIColor grayColor]];
+    
+    [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"search_form_bg"] forState:UIControlStateNormal];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateNormal];
@@ -427,21 +434,22 @@
     
     if (self.beginEditing == YES)
     {
-        cell.textLabel.text = [self.recommendTags objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.recommendTags objectAtIndex:indexPath.row]];
         if ([self.recommendNumberPost count] != 0)
             cell.detailTextLabel.text = [[self.recommendNumberPost objectAtIndex:indexPath.row] stringValue];
     }
     else
     {
         if (indexPath.section == 0) //In favorite section
-        {  
-            cell.textLabel.text = [self.favoriteTags objectAtIndex:indexPath.row];
+        {
+            cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.favoriteTags objectAtIndex:indexPath.row]];
             if ([self.favoriteNumberPost count] != 0)
                 cell.detailTextLabel.text = [[self.favoriteNumberPost objectAtIndex:indexPath.row] stringValue];
         }
+        
         if (indexPath.section == 1) // In frequent section
         {
-            cell.textLabel.text = [self.frequentTags objectAtIndex:indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"#%@", [self.frequentTags objectAtIndex:indexPath.row]];
             if ([self.frequentNumberPost count] != 0)
                 cell.detailTextLabel.text = [[self.frequentNumberPost objectAtIndex:indexPath.row] stringValue];
         }

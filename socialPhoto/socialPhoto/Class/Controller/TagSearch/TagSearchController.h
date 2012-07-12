@@ -32,6 +32,8 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *xButton;
 
+@property (strong, nonatomic) IBOutlet UILabel *tagLabel;
+
 @property (unsafe_unretained, nonatomic) id <TagSearchControllerDelegate> tagDelegate;
 
 - (IBAction)xPressed:(id)sender;
