@@ -76,6 +76,7 @@
                                                      forKey:@"user_id"];
   
   self.getListPhotoDetailFromPhotoIdsRequests.delegate = self;
+  self.getListPhotoDetailFromPhotoIdsRequests.timeOutSeconds = 60;
   [self.getListPhotoDetailFromPhotoIdsRequests startAsynchronous];
 }
 
@@ -114,6 +115,7 @@
   self.getListUserPhotoByTagsRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
   
   self.getListUserPhotoByTagsRequest.delegate = self;
+  self.getListUserPhotoByTagsRequest.timeOutSeconds = 60;
   [self.getListUserPhotoByTagsRequest startAsynchronous];
   
 }
@@ -186,6 +188,7 @@
   
   self.getPhotoDetailRequest = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
   self.getPhotoDetailRequest.delegate = self;
+  self.getPhotoDetailRequest.timeOutSeconds = 60;
   [self.getPhotoDetailRequest startAsynchronous];
   
 }
