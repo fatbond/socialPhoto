@@ -243,6 +243,10 @@
         }
         else
         {
+          imageGridView.frame = CGRectMake((self.myMap.frame.size.width - imageGridView.frame.size.width)/2,
+                                            self.myMap.frame.origin.y + (self.myMap.frame.size.height - imageGridView.frame.size.height)/2,
+                                            imageGridView.frame.size.width,
+                                            imageGridView.frame.size.height);
             [imageGridView reloadData];
             [self.view addSubview:imageGridView];
             NSLog(@"Grid View");
