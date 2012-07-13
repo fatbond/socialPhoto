@@ -18,6 +18,8 @@
 @property (strong, nonatomic) ASIHTTPRequest *frequentTagRequest;
 @property (strong, nonatomic) ASIHTTPRequest *recommendTagRequest;
 
+- (void)popViewControllerWithAnimation;
+
 @end
 
 @implementation MTSearchTagController
@@ -205,6 +207,7 @@
 
 - (void)viewDidLoad
 {
+  
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.beginEditing = NO;
@@ -323,6 +326,21 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  if ([self.navigationController.viewControllers objectAtIndex:0] != self) {
+    // if not the first controller of the navigation stack - means have back button
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, 37, 28);
+    [backButton setImage:[UIImage imageNamed:@"btn_previous.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(popViewControllerWithAnimation) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = backBarButtonItem;
+  }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   
@@ -330,6 +348,17 @@
   [self.frequentTagRequest clearDelegatesAndCancel];
   [self.favoriteTagRequest clearDelegatesAndCancel];
 }
+
+
+
+#pragma mark - Helper methods
+
+- (void)popViewControllerWithAnimation {
+  [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+
 
 #pragma mark - Search bar delegate methods
 
