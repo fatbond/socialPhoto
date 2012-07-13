@@ -275,7 +275,7 @@
     [self.searchBar setTintColor:[UIColor grayColor]];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setBackgroundImage:[UIImage imageNamed:@"whiteBackground.png"] forState:UIControlStateNormal];
+  [button setBackgroundColor:[UIColor whiteColor]];
     [button setTitle:@"Done" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:20.0f];

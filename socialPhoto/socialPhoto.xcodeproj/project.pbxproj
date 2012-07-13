@@ -150,7 +150,6 @@
 		EEDE92AA15AE69A5005A4139 /* MTSearchTagController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92A915AE69A5005A4139 /* MTSearchTagController.xib */; };
 		EEDE92AD15AE6A2B005A4139 /* clearButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92AB15AE6A2B005A4139 /* clearButton.png */; };
 		EEDE92AE15AE6A2B005A4139 /* clearButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92AC15AE6A2B005A4139 /* clearButton@2x.png */; };
-		EEDE92B215AE6CD9005A4139 /* whiteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = EEDE92B115AE6CD9005A4139 /* whiteBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -397,7 +396,6 @@
 		EEDE92A915AE69A5005A4139 /* MTSearchTagController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTSearchTagController.xib; sourceTree = "<group>"; };
 		EEDE92AB15AE6A2B005A4139 /* clearButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clearButton.png; sourceTree = "<group>"; };
 		EEDE92AC15AE6A2B005A4139 /* clearButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clearButton@2x.png"; sourceTree = "<group>"; };
-		EEDE92B115AE6CD9005A4139 /* whiteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -802,7 +800,6 @@
 		DBF8115315AC305C00E41659 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				EEDE92B115AE6CD9005A4139 /* whiteBackground.png */,
 				EEDE92AB15AE6A2B005A4139 /* clearButton.png */,
 				EEDE92AC15AE6A2B005A4139 /* clearButton@2x.png */,
 				4A90922915AD6278006DF8EF /* Default@2x.png */,
@@ -1040,7 +1037,6 @@
 				EEDE92AA15AE69A5005A4139 /* MTSearchTagController.xib in Resources */,
 				EEDE92AD15AE6A2B005A4139 /* clearButton.png in Resources */,
 				EEDE92AE15AE6A2B005A4139 /* clearButton@2x.png in Resources */,
-				EEDE92B215AE6CD9005A4139 /* whiteBackground.png in Resources */,
 				047B112B15AEE89800A57221 /* search_form_bg.png in Resources */,
 				047B112C15AEE89800A57221 /* search_form_bg@2x.png in Resources */,
 				4A3B84D415AEB8B300ABEA9E /* MTLoginController.xib in Resources */,
